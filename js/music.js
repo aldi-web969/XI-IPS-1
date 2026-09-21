@@ -1,13 +1,7 @@
-/* =====================================================
-   XI IPS 1 MUSIC PLAYER
-   ===================================================== */
-
 "use strict";
 
 
-/* =====================================================
-   ELEMENTS
-   ===================================================== */
+/* ELEMENT */
 
 const musicUI =
     document.getElementById("musicUI");
@@ -57,16 +51,11 @@ const songArtist =
 const songCount =
     document.getElementById("songCount");
 
-const cover =
-    document.getElementById("cover");
-
 const favoriteBtn =
     document.getElementById("favoriteBtn");
 
 
-/* =====================================================
-   SONG DATABASE
-   ===================================================== */
+/* DAFTAR LAGU */
 
 const songs = [
 
@@ -145,17 +134,13 @@ let favorites =
     );
 
 
-/* =====================================================
-   OPEN UI
-   ===================================================== */
+/* BUKA */
 
 openMusic.addEventListener(
     "click",
     () => {
 
-        musicUI.classList.add(
-            "open"
-        );
+        musicUI.classList.add("open");
 
         openMusic.style.display =
             "none";
@@ -164,17 +149,13 @@ openMusic.addEventListener(
 );
 
 
-/* =====================================================
-   CLOSE UI
-   ===================================================== */
+/* TUTUP */
 
 closeMusic.addEventListener(
     "click",
     () => {
 
-        musicUI.classList.remove(
-            "open"
-        );
+        musicUI.classList.remove("open");
 
         openMusic.style.display =
             "block";
@@ -183,38 +164,31 @@ closeMusic.addEventListener(
 );
 
 
-/* =====================================================
-   RENDER PLAYLIST
-   ===================================================== */
+/* RENDER PLAYLIST */
 
 function renderPlaylist(list = songs) {
 
     playlist.innerHTML = "";
 
+    songCount.textContent =
+        `${list.length} lagu`;
+
+
     if (!list.length) {
 
         playlist.innerHTML = `
-            <div
-                style="
-                    grid-column:1/-1;
-                    padding:40px;
-                    text-align:center;
-                    color:#89938d;
-                "
-            >
+            <div style="
+                grid-column:1/-1;
+                padding:40px;
+                text-align:center;
+                color:#89938d;
+            ">
                 Lagu tidak ditemukan.
             </div>
         `;
 
-        songCount.textContent =
-            "0 lagu";
-
         return;
     }
-
-
-    songCount.textContent =
-        `${list.length} lagu`;
 
 
     list.forEach(
@@ -224,9 +198,7 @@ function renderPlaylist(list = songs) {
                 songs.indexOf(song);
 
             const item =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
             item.className =
                 "song-item";
@@ -236,9 +208,11 @@ function renderPlaylist(list = songs) {
                 originalIndex ===
                 currentIndex
             ) {
+
                 item.classList.add(
                     "playing"
                 );
+
             }
 
 
@@ -270,10 +244,7 @@ function renderPlaylist(list = songs) {
 
                 </div>
 
-                <button
-                    class="song-play"
-                    title="Putar"
-                >
+                <button class="song-play">
                     ▶
                 </button>
 
@@ -293,49 +264,15 @@ function renderPlaylist(list = songs) {
             );
 
 
-            playlist.appendChild(
-                item
-            );
+            playlist.appendChild(item);
 
         }
     );
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-   ===================================================== */
-
-function escapeHTML(value) {
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
 
 }
 
 
-/* =====================================================
-   LOAD SONG
-   ===================================================== */
+/* LOAD SONG */
 
 function loadSong(
     index,
@@ -350,8 +287,7 @@ function loadSong(
     }
 
 
-    currentIndex =
-        index;
+    currentIndex = index;
 
 
     const song =
@@ -373,10 +309,6 @@ function loadSong(
         song.artist;
 
 
-    cover.innerHTML =
-        `<div class="cover-icon">♪</div>`;
-
-
     updateFavoriteButton();
 
 
@@ -390,85 +322,68 @@ function loadSong(
         audio.play()
             .then(() => {
 
-                isPlaying =
-                    true;
+                isPlaying = true;
 
                 updatePlayButton();
 
             })
-            .catch(error => {
-
-                console.warn(
-                    "Audio tidak dapat diputar:",
-                    error
-                );
-
-            });
+            .catch(
+                error => {
+                    console.warn(
+                        "Audio gagal diputar:",
+                        error
+                    );
+                }
+            );
 
     }
 
 }
 
 
-/* =====================================================
-   PLAY / PAUSE
-   ===================================================== */
+/* PLAY / PAUSE */
 
 playBtn.addEventListener(
     "click",
-    togglePlay
+    () => {
+
+        if (!audio.src) {
+
+            loadSong(
+                currentIndex,
+                true
+            );
+
+            return;
+        }
+
+
+        if (audio.paused) {
+
+            audio.play()
+                .then(() => {
+
+                    isPlaying = true;
+
+                    updatePlayButton();
+
+                });
+
+        } else {
+
+            audio.pause();
+
+            isPlaying = false;
+
+            updatePlayButton();
+
+        }
+
+    }
 );
 
 
-function togglePlay() {
-
-    if (!audio.src) {
-
-        loadSong(
-            currentIndex,
-            true
-        );
-
-        return;
-    }
-
-
-    if (audio.paused) {
-
-        audio.play()
-            .then(() => {
-
-                isPlaying =
-                    true;
-
-                updatePlayButton();
-
-            })
-            .catch(error => {
-
-                console.warn(
-                    error
-                );
-
-            });
-
-    } else {
-
-        audio.pause();
-
-        isPlaying =
-            false;
-
-        updatePlayButton();
-
-    }
-
-}
-
-
-/* =====================================================
-   PLAY BUTTON UI
-   ===================================================== */
+/* UPDATE PLAY */
 
 function updatePlayButton() {
 
@@ -480,9 +395,7 @@ function updatePlayButton() {
 }
 
 
-/* =====================================================
-   PREVIOUS
-   ===================================================== */
+/* PREVIOUS */
 
 previousBtn.addEventListener(
     "click",
@@ -493,8 +406,10 @@ previousBtn.addEventListener(
         if (
             currentIndex < 0
         ) {
+
             currentIndex =
                 songs.length - 1;
+
         }
 
         loadSong(
@@ -506,9 +421,7 @@ previousBtn.addEventListener(
 );
 
 
-/* =====================================================
-   NEXT
-   ===================================================== */
+/* NEXT */
 
 nextBtn.addEventListener(
     "click",
@@ -520,7 +433,9 @@ nextBtn.addEventListener(
             currentIndex >=
             songs.length
         ) {
+
             currentIndex = 0;
+
         }
 
         loadSong(
@@ -532,9 +447,7 @@ nextBtn.addEventListener(
 );
 
 
-/* =====================================================
-   AUTO NEXT
-   ===================================================== */
+/* AUTO NEXT */
 
 audio.addEventListener(
     "ended",
@@ -546,7 +459,9 @@ audio.addEventListener(
             currentIndex >=
             songs.length
         ) {
+
             currentIndex = 0;
+
         }
 
         loadSong(
@@ -558,9 +473,7 @@ audio.addEventListener(
 );
 
 
-/* =====================================================
-   TIME UPDATE
-   ===================================================== */
+/* PROGRESS */
 
 audio.addEventListener(
     "timeupdate",
@@ -576,15 +489,11 @@ audio.addEventListener(
         }
 
 
-        const percentage =
+        progress.value =
             (
                 audio.currentTime /
                 audio.duration
             ) * 100;
-
-
-        progress.value =
-            percentage;
 
 
         currentTime.textContent =
@@ -596,9 +505,7 @@ audio.addEventListener(
 );
 
 
-/* =====================================================
-   METADATA
-   ===================================================== */
+/* DURATION */
 
 audio.addEventListener(
     "loadedmetadata",
@@ -613,25 +520,20 @@ audio.addEventListener(
 );
 
 
-/* =====================================================
-   PROGRESS
-   ===================================================== */
+/* SEEK */
 
 progress.addEventListener(
     "input",
     () => {
 
-        if (
-            !audio.duration
-        ) {
+        if (!audio.duration) {
             return;
         }
 
 
         audio.currentTime =
             (
-                progress.value /
-                100
+                progress.value / 100
             ) *
             audio.duration;
 
@@ -639,14 +541,10 @@ progress.addEventListener(
 );
 
 
-/* =====================================================
-   VOLUME
-   ===================================================== */
+/* VOLUME */
 
 audio.volume =
-    Number(
-        volume.value
-    );
+    Number(volume.value);
 
 
 volume.addEventListener(
@@ -654,9 +552,7 @@ volume.addEventListener(
     () => {
 
         audio.volume =
-            Number(
-                volume.value
-            );
+            Number(volume.value);
 
         localStorage.setItem(
             "xi_ips_music_volume",
@@ -667,52 +563,19 @@ volume.addEventListener(
 );
 
 
-/* =====================================================
-   SAVE VOLUME
-   ===================================================== */
-
-const savedVolume =
-    localStorage.getItem(
-        "xi_ips_music_volume"
-    );
-
-
-if (
-    savedVolume !== null
-) {
-
-    volume.value =
-        savedVolume;
-
-    audio.volume =
-        Number(
-            savedVolume
-        );
-
-}
-
-
-/* =====================================================
-   FAVORITE
-   ===================================================== */
+/* FAVORITE */
 
 favoriteBtn.addEventListener(
     "click",
     () => {
 
-        const song =
-            songs[currentIndex];
-
-
-        const existing =
+        const position =
             favorites.indexOf(
                 currentIndex
             );
 
 
-        if (
-            existing === -1
-        ) {
+        if (position === -1) {
 
             favorites.push(
                 currentIndex
@@ -721,7 +584,7 @@ favoriteBtn.addEventListener(
         } else {
 
             favorites.splice(
-                existing,
+                position,
                 1
             );
 
@@ -741,6 +604,8 @@ favoriteBtn.addEventListener(
     }
 );
 
+
+/* FAVORITE UI */
 
 function updateFavoriteButton() {
 
@@ -764,19 +629,14 @@ function updateFavoriteButton() {
 }
 
 
-/* =====================================================
-   SEARCH
-   ===================================================== */
+/* SEARCH */
 
 searchInput.addEventListener(
     "input",
     () => {
 
-        const list =
-            getFilteredSongs();
-
         renderPlaylist(
-            list
+            getFilteredSongs()
         );
 
     }
@@ -808,15 +668,12 @@ function getFilteredSongs() {
             song.artist
                 .toLowerCase()
                 .includes(query)
-
     );
 
 }
 
 
-/* =====================================================
-   FORMAT TIME
-   ===================================================== */
+/* FORMAT TIME */
 
 function formatTime(seconds) {
 
@@ -834,53 +691,58 @@ function formatTime(seconds) {
         );
 
 
-    const secs =
+    const secondsLeft =
         Math.floor(
             seconds % 60
         );
 
 
-    return `${minutes}:${String(
-        secs
-    ).padStart(2, "0")}`;
+    return (
+        minutes +
+        ":" +
+        String(
+            secondsLeft
+        ).padStart(2, "0")
+    );
 
 }
 
 
-/* =====================================================
-   KEYBOARD
-   ===================================================== */
+/* ESCAPE */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* KEYBOARD */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if (
-            event.code ===
-            "Space"
+            event.code === "Space" &&
+            document.activeElement.tagName !==
+            "INPUT"
         ) {
-
-            const tag =
-                document.activeElement
-                    ?.tagName;
-
-            if (
-                tag === "INPUT"
-            ) {
-                return;
-            }
-
 
             event.preventDefault();
 
-            togglePlay();
+            playBtn.click();
 
         }
 
 
         if (
-            event.key ===
-            "Escape"
+            event.key === "Escape"
         ) {
 
             musicUI.classList.remove(
@@ -896,9 +758,7 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   START
-   ===================================================== */
+/* START */
 
 renderPlaylist();
 
@@ -906,5 +766,3 @@ loadSong(
     0,
     false
 );
-
-updatePlayButton();
