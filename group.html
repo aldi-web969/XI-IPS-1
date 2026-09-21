@@ -6,210 +6,765 @@
 
     <title>Spin Kelompok | XI IPS 1</title>
 
-    <meta name="description"
-          content="Sistem spin pembagian kelompok XI IPS 1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="css/group.css">
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(140,255,152,.13), transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(89,191,255,.10), transparent 30%),
+                #050609;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND */
+
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: #8cff98;
+            filter: blur(130px);
+            opacity: .08;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        .glow2 {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: #59bfff;
+            filter: blur(130px);
+            opacity: .08;
+            right: -150px;
+            bottom: -150px;
+            z-index: -1;
+        }
+
+        /* HEADER */
+
+        header {
+            width: min(1100px, 92%);
+            margin-top: 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 20px;
+
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+
+            backdrop-filter: blur(20px);
+
+            border-radius: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 12px;
+
+            background: rgba(140,255,152,.1);
+            border: 1px solid rgba(140,255,152,.3);
+
+            color: #8cff98;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            font-size: 17px;
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: #8f9892;
+            margin-top: 3px;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #ddd;
+
+            padding: 9px 14px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+
+            transition: .25s;
+        }
+
+        .back:hover {
+            color: #8cff98;
+            border-color: #8cff98;
+        }
+
+        /* TITLE */
+
+        .title {
+            text-align: center;
+            margin-top: 45px;
+        }
+
+        .title .badge {
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            background: rgba(140,255,152,.08);
+            border: 1px solid rgba(140,255,152,.2);
+
+            color: #8cff98;
+
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .title h2 {
+            font-size: clamp(35px, 6vw, 60px);
+            letter-spacing: -2px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #8cff98,
+                #ffffff
+            );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            color: transparent;
+
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200%;
+            }
+        }
+
+        .title p {
+            color: #8f9892;
+            margin-top: 12px;
+        }
+
+        /* SPIN AREA */
+
+        .spin-container {
+            margin-top: 35px;
+
+            width: min(900px, 94%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* POINTER */
+
+        .pointer {
+            position: relative;
+
+            width: 0;
+            height: 0;
+
+            border-left: 17px solid transparent;
+            border-right: 17px solid transparent;
+            border-top: 35px solid #8cff98;
+
+            filter:
+                drop-shadow(0 0 8px rgba(140,255,152,.7));
+
+            z-index: 5;
+
+            margin-bottom: -8px;
+        }
+
+        /* WHEEL */
+
+        .wheel-wrapper {
+            position: relative;
+
+            width: min(470px, 88vw);
+            aspect-ratio: 1 / 1;
+
+            padding: 10px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(140,255,152,.35),
+                    rgba(255,255,255,.08),
+                    rgba(89,191,255,.25)
+                );
+
+            box-shadow:
+                0 0 35px rgba(140,255,152,.12),
+                0 25px 80px rgba(0,0,0,.5);
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+
+            border-radius: 50%;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 5px solid #101419;
+
+            background: conic-gradient(
+                #8cff98 0deg 60deg,
+                #151b20 60deg 120deg,
+                #59bfff 120deg 180deg,
+                #151b20 180deg 240deg,
+                #8cff98 240deg 300deg,
+                #151b20 300deg 360deg
+            );
+
+            transition:
+                transform 4s cubic-bezier(.15,.8,.15,1);
+        }
+
+        /* WHEEL CENTER */
+
+        .wheel-center {
+            position: absolute;
+
+            width: 82px;
+            height: 82px;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: #07090c;
+
+            border: 4px solid rgba(140,255,152,.7);
+
+            box-shadow:
+                0 0 25px rgba(140,255,152,.25);
+
+            display: grid;
+            place-items: center;
+
+            z-index: 4;
+
+            color: #8cff98;
+            font-weight: bold;
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        /* WHEEL LABELS */
+
+        .wheel-label {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 100%;
+            height: 100%;
+
+            transform: translate(-50%, -50%);
+
+            pointer-events: none;
+        }
+
+        .wheel-label span {
+            position: absolute;
+
+            left: 50%;
+            top: 7%;
+
+            transform:
+                translateX(-50%)
+                rotate(var(--angle));
+
+            transform-origin: 50% 215px;
+
+            width: 90px;
+
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            color: white;
+
+            text-shadow:
+                0 2px 8px black;
+        }
+
+        /* BUTTON */
+
+        .controls {
+            margin-top: 30px;
+
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+        .spin-button {
+            border: none;
+
+            padding: 15px 32px;
+
+            border-radius: 14px;
+
+            background: #8cff98;
+            color: #061008;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 25px rgba(140,255,152,.18);
+
+            transition: .25s;
+        }
+
+        .spin-button:hover {
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow:
+                0 0 35px rgba(140,255,152,.35);
+        }
+
+        .spin-button:active {
+            transform: scale(.96);
+        }
+
+        .reset-button {
+            border: 1px solid rgba(255,255,255,.12);
+
+            padding: 15px 25px;
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,.05);
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .reset-button:hover {
+            border-color: #8cff98;
+            color: #8cff98;
+        }
+
+        /* RESULT */
+
+        .result {
+            width: min(550px, 92%);
+
+            margin-top: 30px;
+
+            padding: 22px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,.045);
+
+            border: 1px solid rgba(255,255,255,.09);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(20px);
+
+            opacity: .8;
+
+            transition: .3s;
+        }
+
+        .result.active {
+            opacity: 1;
+
+            border-color: rgba(140,255,152,.35);
+
+            box-shadow:
+                0 0 35px rgba(140,255,152,.08);
+        }
+
+        .result small {
+            color: #8f9892;
+        }
+
+        .result h3 {
+            color: #8cff98;
+
+            font-size: 25px;
+
+            margin-top: 8px;
+        }
+
+        .result p {
+            color: #cdd4cf;
+
+            margin-top: 6px;
+        }
+
+        /* INFO */
+
+        .info {
+            margin-top: 20px;
+
+            color: #737c76;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 35px;
+
+            padding: 25px;
+
+            color: #59615c;
+
+            font-size: 11px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            header {
+                margin-top: 15px;
+            }
+
+            .title {
+                margin-top: 35px;
+            }
+
+            .wheel-label span {
+                transform-origin: 50% 150px;
+                font-size: 10px;
+                width: 65px;
+            }
+
+            .wheel-center {
+                width: 65px;
+                height: 65px;
+                font-size: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-    <div class="grid-bg"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
+<header>
 
-        <a href="index.html" class="brand">
-            <span class="brand-icon">XI</span>
+    <div class="brand">
 
-            <div>
-                <strong>XI IPS 1</strong>
-                <small>GROUP SPIN</small>
-            </div>
-        </a>
+        <div class="logo">
+            XI
+        </div>
 
-        <a href="index.html" class="back-btn">
-            ← Kembali
-        </a>
+        <div>
+            <h1>XI IPS 1</h1>
+            <p>Class Portal</p>
+        </div>
 
-    </header>
+    </div>
 
+    <a href="index.html" class="back">
+        ← Kembali
+    </a>
 
-    <!-- MAIN -->
-    <main class="container">
-
-        <!-- HEADER -->
-        <section class="hero">
-
-            <div class="badge">
-                GROUP RANDOMIZER
-            </div>
-
-            <h1>
-                Spin Pembagian
-                <span>Kelompok</span>
-            </h1>
-
-            <p>
-                Putar roda untuk menentukan kelompok secara acak.
-            </p>
-
-        </section>
+</header>
 
 
-        <!-- SPIN AREA -->
-        <section class="game-card">
+<section class="title">
 
-            <div class="settings">
+    <div class="badge">
+        RANDOM GROUP GENERATOR
+    </div>
 
-                <label for="groupCount">
-                    Jumlah Kelompok
-                </label>
+    <h2>Spin Kelompok</h2>
 
-                <div class="select-row">
+    <p>
+        Putar roda untuk menentukan kelompok secara acak.
+    </p>
 
-                    <select id="groupCount">
-                        <option value="2">2 Kelompok</option>
-                        <option value="3">3 Kelompok</option>
-                        <option value="4">4 Kelompok</option>
-                        <option value="5">5 Kelompok</option>
-                        <option value="6">6 Kelompok</option>
-                        <option value="7">7 Kelompok</option>
-                        <option value="8">8 Kelompok</option>
-                    </select>
-
-                    <button
-                        id="resetBtn"
-                        class="secondary-btn">
-                        Reset
-                    </button>
-
-                </div>
-
-            </div>
+</section>
 
 
-            <!-- WHEEL -->
-            <div class="wheel-area">
+<main class="spin-container">
 
-                <div class="pointer"></div>
+    <!-- POINTER -->
 
-                <div
-                    class="wheel"
-                    id="wheel">
+    <div class="pointer"></div>
 
-                    <div class="wheel-center">
-                        <span>SPIN</span>
-                    </div>
 
-                </div>
+    <!-- WHEEL -->
+
+    <div class="wheel-wrapper">
+
+        <div class="wheel" id="wheel">
+
+            <div class="wheel-label">
+
+                <span style="--angle:0deg;">
+                    Kelompok 1
+                </span>
+
+                <span style="--angle:60deg;">
+                    Kelompok 2
+                </span>
+
+                <span style="--angle:120deg;">
+                    Kelompok 3
+                </span>
+
+                <span style="--angle:180deg;">
+                    Kelompok 4
+                </span>
+
+                <span style="--angle:240deg;">
+                    Kelompok 5
+                </span>
+
+                <span style="--angle:300deg;">
+                    Kelompok 6
+                </span>
 
             </div>
 
-
-            <!-- CURRENT NAME -->
-            <div class="current-result">
-
-                <span>HASIL SPIN</span>
-
-                <strong id="currentName">
-                    Siap?
-                </strong>
-
+            <div class="wheel-center">
+                SPIN
             </div>
 
+        </div>
 
-            <!-- BUTTON -->
-            <button
-                id="spinBtn"
-                class="spin-btn">
-
-                <span class="spin-icon">↻</span>
-                PUTAR RODA
-
-            </button>
+    </div>
 
 
-            <!-- STATUS -->
-            <div
-                class="status"
-                id="status">
+    <!-- BUTTON -->
 
-                Klik "Putar Roda" untuk memulai.
+    <div class="controls">
 
-            </div>
+        <button
+            class="spin-button"
+            onclick="spinWheel()"
+            id="spinButton">
 
-        </section>
+            PUTAR RODA
 
+        </button>
 
-        <!-- GROUP RESULT -->
-        <section class="results-section">
+        <button
+            class="reset-button"
+            onclick="resetWheel()">
 
-            <div class="section-title">
+            Reset
 
-                <div>
-                    <span>HASIL PEMBAGIAN</span>
+        </button>
 
-                    <h2>
-                        Kelompok Kelas
-                    </h2>
-                </div>
-
-                <button
-                    id="shuffleBtn"
-                    class="shuffle-btn">
-
-                    Acak Ulang
-
-                </button>
-
-            </div>
+    </div>
 
 
-            <div
-                class="groups"
-                id="groups">
+    <!-- RESULT -->
 
-                <div class="empty-state">
+    <div class="result" id="result">
 
-                    <div class="empty-icon">
-                        +
-                    </div>
+        <small>HASIL SPIN</small>
 
-                    <h3>
-                        Belum ada pembagian
-                    </h3>
+        <h3 id="resultTitle">
+            Siap?
+        </h3>
 
-                    <p>
-                        Putar roda atau tekan Acak Ulang
-                        untuk membuat kelompok.
-                    </p>
+        <p id="resultText">
+            Tekan tombol PUTAR RODA untuk menentukan kelompok.
+        </p>
 
-                </div>
-
-            </div>
-
-        </section>
+    </div>
 
 
-        <!-- FOOTER -->
-        <footer>
+    <div class="info">
+        Setiap putaran akan memilih kelompok secara acak.
+    </div>
 
-            <strong>XI IPS 1</strong>
-
-            <span>
-                Group Randomizer
-            </span>
-
-        </footer>
-
-    </main>
+</main>
 
 
-    <script src="js/group.js"></script>
+<footer>
+    XI IPS 1 • Spin Kelompok
+</footer>
+
+
+<script>
+
+    const wheel = document.getElementById("wheel");
+    const result = document.getElementById("result");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultText = document.getElementById("resultText");
+    const spinButton = document.getElementById("spinButton");
+
+    let rotation = 0;
+    let spinning = false;
+
+    const groups = [
+        "Kelompok 1",
+        "Kelompok 2",
+        "Kelompok 3",
+        "Kelompok 4",
+        "Kelompok 5",
+        "Kelompok 6"
+    ];
+
+
+    function spinWheel() {
+
+        if (spinning) return;
+
+        spinning = true;
+
+        spinButton.disabled = true;
+
+        spinButton.innerText = "MEMUTAR...";
+
+        result.classList.remove("active");
+
+        /*
+            6 kelompok
+            Setiap bagian = 60 derajat
+        */
+
+        const randomGroup =
+            Math.floor(Math.random() * groups.length);
+
+        /*
+            Putaran tambahan agar roda benar-benar
+            berputar beberapa kali
+        */
+
+        const extraSpin =
+            360 * (5 + Math.floor(Math.random() * 4));
+
+        /*
+            Posisi menuju kelompok yang dipilih
+        */
+
+        const target =
+            360 - (randomGroup * 60 + 30);
+
+        rotation += extraSpin + target;
+
+        wheel.style.transform =
+            `rotate(${rotation}deg)`;
+
+
+        setTimeout(() => {
+
+            resultTitle.innerText =
+                groups[randomGroup];
+
+            resultText.innerText =
+                "Kelompok berhasil ditentukan!";
+
+            result.classList.add("active");
+
+            spinButton.disabled = false;
+
+            spinButton.innerText =
+                "PUTAR LAGI";
+
+            spinning = false;
+
+        }, 4200);
+
+    }
+
+
+    function resetWheel() {
+
+        if (spinning) return;
+
+        rotation = 0;
+
+        wheel.style.transition = "none";
+
+        wheel.style.transform =
+            "rotate(0deg)";
+
+        setTimeout(() => {
+
+            wheel.style.transition =
+                "transform 4s cubic-bezier(.15,.8,.15,1)";
+
+        }, 50);
+
+
+        resultTitle.innerText =
+            "Siap?";
+
+        resultText.innerText =
+            "Tekan tombol PUTAR RODA untuk menentukan kelompok.";
+
+        result.classList.remove("active");
+
+        spinButton.innerText =
+            "PUTAR RODA";
+
+    }
+
+</script>
 
 </body>
 </html>
