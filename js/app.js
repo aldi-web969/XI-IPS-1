@@ -3,25 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
     // ------------------------------------------------------------
-    // Loader
-    // ------------------------------------------------------------
-    const loader = $('#loader');
-    const progress = $('#loaderProgress');
-    const loadingText = $('#loadingText');
-
-    let progressValue = 0;
-    const loaderTimer = setInterval(() => {
-        progressValue = Math.min(100, progressValue + 2);
-        if (progress) progress.style.width = `${progressValue}%`;
-        if (loadingText) loadingText.textContent = `${progressValue}%`;
-
-        if (progressValue >= 100) {
-            clearInterval(loaderTimer);
-            setTimeout(() => loader?.classList.add('hide'), 350);
-        }
-    }, 30);
-
-    // ------------------------------------------------------------
     // Background particles
     // ------------------------------------------------------------
     const canvas = $('#particles');
