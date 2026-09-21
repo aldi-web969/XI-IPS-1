@@ -325,3 +325,17 @@
 @keyframes spinStagePulse{50%{transform:scale(1.04);opacity:.6}}@keyframes spinButtonIcon{to{transform:rotate(360deg)}}@keyframes statusPulse{to{box-shadow:0 0 18px rgba(140,255,152,.18)}}
 @media(max-width:900px){.spin-layout{grid-template-columns:1fr}.spin-stage{min-height:500px}.spin-pointer{top:calc(50% - 240px)}}
 @media(max-width:600px){.spin-layout{padding:14px}.spin-stage{min-height:390px}.spin-pointer{top:calc(50% - 178px);border-left-width:11px;border-right-width:11px;border-top-width:25px}.spin-pointer::after{top:-22px;width:9px;height:9px;left:-4px}.spin-center{width:72px;height:72px}.spin-center span{font-size:16px}.spin-controls{grid-template-columns:1fr}.spin-main-button{grid-column:auto}.spin-controls>.btn:last-child{grid-column:auto}.group-list{grid-template-columns:1fr}.spin-panel__head h3{font-size:23px}}
+
+
+/* Initial website loading */
+#loadingScreen{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,rgba(140,255,152,.08),transparent 32%),#050609;color:#f7f9f8;transition:opacity .45s ease,visibility .45s ease;}
+#loadingScreen.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+#loadingScreen .loading-orb{position:absolute;width:82px;height:82px;border:2px solid rgba(140,255,152,.18);border-top-color:#8cff98;border-radius:50%;animation:initialLoaderSpin 1s linear infinite;box-shadow:0 0 30px rgba(140,255,152,.12);}
+#loadingScreen .loading-orb span{position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(197,255,202,.25);border-bottom-color:#c5ffca;animation:initialLoaderSpin 1.5s linear infinite reverse;}
+#loadingScreen .loading-title{position:absolute;margin-top:155px;font-weight:800;letter-spacing:.12em;font-size:18px;}
+#loadingScreen .loading-subtitle{position:absolute;margin-top:205px;color:#98a19b;font-size:13px;}
+#loadingScreen .loading-progress{position:absolute;margin-top:270px;width:min(240px,55vw);height:3px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;}
+#loadingScreen .loading-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8cff98,#c5ffca);animation:initialLoaderProgress 1.5s ease forwards;}
+@keyframes initialLoaderSpin{to{transform:rotate(360deg)}}
+@keyframes initialLoaderProgress{to{width:100%}}
+@media (prefers-reduced-motion:reduce){#loadingScreen .loading-orb,#loadingScreen .loading-orb span,#loadingScreen .loading-progress i{animation-duration:.01ms;animation-iteration-count:1;}}
