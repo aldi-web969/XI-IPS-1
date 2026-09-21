@@ -2,42 +2,25 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>XI IPS 1 Music</title>
 
-    <link
-        rel="stylesheet"
-        href="music.css"
-    >
+    <link rel="stylesheet" href="css/music.css">
 </head>
 
 <body>
 
-    <!-- OPEN MUSIC BUTTON -->
-
-    <button
-        id="openMusic"
-        class="open-music"
-        aria-label="Buka Music Player"
-    >
-        <span>♪</span>
+    <!-- TOMBOL BUKA MUSIC -->
+    <button id="openMusic" class="open-music">
+        ♪
     </button>
 
 
-    <!-- MUSIC UI -->
-
-    <section
-        id="musicUI"
-        class="music-ui"
-    >
+    <!-- MUSIC PLAYER -->
+    <section id="musicUI" class="music-ui">
 
         <!-- HEADER -->
-
         <header class="music-header">
 
             <div class="brand">
@@ -53,12 +36,7 @@
 
             </div>
 
-
-            <button
-                id="closeMusic"
-                class="close-btn"
-                aria-label="Tutup Music Player"
-            >
+            <button id="closeMusic" class="close-btn">
                 ×
             </button>
 
@@ -66,7 +44,6 @@
 
 
         <!-- SEARCH -->
-
         <div class="search-box">
 
             <span>⌕</span>
@@ -81,23 +58,17 @@
         </div>
 
 
-        <!-- MAIN CONTENT -->
-
+        <!-- CONTENT -->
         <main class="music-content">
 
             <!-- NOW PLAYING -->
-
             <section class="now-playing">
 
-                <div
-                    id="cover"
-                    class="cover"
-                >
+                <div id="cover" class="cover">
                     <div class="cover-icon">
                         ♪
                     </div>
                 </div>
-
 
                 <div class="song-info">
 
@@ -115,11 +86,9 @@
 
                 </div>
 
-
                 <button
                     id="favoriteBtn"
                     class="favorite"
-                    title="Favorite"
                 >
                     ♡
                 </button>
@@ -128,20 +97,19 @@
 
 
             <!-- PLAYLIST -->
-
             <section class="playlist-section">
 
                 <div class="section-title">
 
                     <div>
                         <h2>Playlist</h2>
+
                         <p id="songCount">
                             10 lagu
                         </p>
                     </div>
 
                 </div>
-
 
                 <div
                     id="playlist"
@@ -154,7 +122,6 @@
 
 
         <!-- PLAYER -->
-
         <footer class="player">
 
             <div class="player-top">
@@ -180,30 +147,20 @@
 
             <div class="player-controls">
 
-                <button
-                    id="previousBtn"
-                    title="Previous"
-                >
+                <button id="previousBtn">
                     ⏮
                 </button>
-
 
                 <button
                     id="playBtn"
                     class="play-btn"
-                    title="Play"
                 >
                     ▶
                 </button>
 
-
-                <button
-                    id="nextBtn"
-                    title="Next"
-                >
+                <button id="nextBtn">
                     ⏭
                 </button>
-
 
                 <div class="volume">
 
@@ -228,14 +185,13 @@
 
 
     <!-- AUDIO -->
-
     <audio
         id="audio"
         preload="metadata"
     ></audio>
 
 
-    <script src="music.js"></script>
+    <script src="js/music.js"></script>
 
 </body>
 </html>
