@@ -607,3 +607,37 @@ if (musicButton && musicPlayer) {
     });
 
 }
+
+/* =========================================
+   SPIN LOADER - XI IPS 1
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const loadingScreen = document.getElementById("loadingScreen");
+
+    if (!loadingScreen) {
+        console.warn("Loading screen tidak ditemukan.");
+        return;
+    }
+
+    // Pastikan loading tampil
+    loadingScreen.classList.remove("loading-hidden");
+
+    // Hilangkan loading setelah website siap
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            loadingScreen.classList.add("loading-hidden");
+
+            // Hapus dari tampilan setelah animasi selesai
+            setTimeout(() => {
+                loadingScreen.style.display = "none";
+            }, 650);
+
+        }, 900);
+
+    });
+
+});
