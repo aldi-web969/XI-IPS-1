@@ -1,1925 +1,1533 @@
 <!DOCTYPE html>
 <html lang="id">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Website kelas XI IPS 1 dengan jadwal, siswa, tugas, galeri, dan pemutar musik." name="description"/>
-  <title>
-   XI IPS 1 &mdash; Class Portal
-  </title>
-  <link href="assets/images/logo.svg" rel="icon" type="image/svg+xml"/>
-  <link href="css/style.css" rel="stylesheet"/>
- </head>
- <body>
-  <!-- Professional local SVG icon set -->
-  <svg aria-hidden="true" class="icon-sprite" focusable="false">
-   <defs>
-    <symbol id="icon-sun" viewbox="0 0 24 24">
-     <circle cx="12" cy="12" r="4">
-     </circle>
-     <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42">
-     </path>
-    </symbol>
-    <symbol id="icon-music" viewbox="0 0 24 24">
-     <path d="M9 18V5l10-2v13">
-     </path>
-     <circle cx="6" cy="18" r="3">
-     </circle>
-     <circle cx="16" cy="16" r="3">
-     </circle>
-    </symbol>
-    <symbol id="icon-shuffle" viewbox="0 0 24 24"><path d="M3 7h3c5 0 7 10 12 10h3M18 14l3 3-3 3M3 17h3c2 0 3-2 4-4M18 7l3-3-3-3"></path></symbol>
-    <symbol id="icon-repeat" viewbox="0 0 24 24"><path d="M17 2l4 4-4 4"></path><path d="M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4"></path><path d="M21 13v2a3 3 0 0 1-3 3H3"></path></symbol>
-    <symbol id="icon-search" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></symbol>
-    <symbol id="icon-list" viewbox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"></path><circle cx="3.5" cy="6" r="1"></circle><circle cx="3.5" cy="12" r="1"></circle><circle cx="3.5" cy="18" r="1"></circle></symbol>
-    <symbol id="icon-menu" viewbox="0 0 24 24">
-     <path d="M4 6h16M4 12h16M4 18h16">
-     </path>
-    </symbol>
-    <symbol id="icon-spark" viewbox="0 0 24 24">
-     <path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z">
-     </path>
-     <path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z">
-     </path>
-    </symbol>
-    <symbol id="icon-person" viewbox="0 0 24 24">
-     <circle cx="12" cy="5" r="3">
-     </circle>
-     <path d="M9 22v-5l-2-5 3-2 2 4 2-4 3 2-2 5v5M9 12l-3 1M15 12l3 1">
-     </path>
-    </symbol>
-    <symbol id="icon-landmark" viewbox="0 0 24 24">
-     <path d="m3 10 9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 18h18M2 21h20">
-     </path>
-    </symbol>
-    <symbol id="icon-coffee" viewbox="0 0 24 24">
-     <path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z">
-     </path>
-     <path d="M17 10h2a3 3 0 0 1 0 6h-2M7 4v2M11 3v3">
-     </path>
-    </symbol>
-    <symbol id="icon-laptop" viewbox="0 0 24 24">
-     <rect height="11" rx="1.5" width="14" x="5" y="4">
-     </rect>
-     <path d="M3 19h18M8 19l1-3h6l1 3">
-     </path>
-    </symbol>
-    <symbol id="icon-language" viewbox="0 0 24 24">
-     <path d="M4 5h8M8 5v2c0 5-2 8-5 10M5 11c2 2 4 3 7 4M15 5h5M17.5 5v2c0 5 1.5 8 4 11M15 15h6M16 11h4">
-     </path>
-    </symbol>
-    <symbol id="icon-church" viewbox="0 0 24 24">
-     <path d="M12 3v4M9 6h6M5 11l7-5 7 5M6 11v9h12v-9M10 20v-5h4v5">
-     </path>
-    </symbol>
-    <symbol id="icon-users" viewbox="0 0 24 24">
-     <circle cx="9" cy="8" r="3">
-     </circle>
-     <circle cx="17" cy="9" r="2.5">
-     </circle>
-     <path d="M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6M15 14c3 0 6 2 6 6">
-     </path>
-    </symbol>
-    <symbol id="icon-palette" viewbox="0 0 24 24">
-     <path d="M12 3a9 9 0 0 0 0 18h1.5a2 2 0 0 0 0-4H12a2 2 0 0 1 0-4h2.5A6.5 6.5 0 0 0 12 3Z">
-     </path>
-     <circle cx="7" cy="9" r="1">
-     </circle>
-     <circle cx="10" cy="6.5" r="1">
-     </circle>
-     <circle cx="15" cy="7" r="1">
-     </circle>
-    </symbol>
-    <symbol id="icon-coins" viewbox="0 0 24 24">
-     <ellipse cx="9" cy="7" rx="6" ry="3">
-     </ellipse>
-     <path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7M9 12c0 1.7 2.7 3 6 3s6-1.3 6-3V9c0-1.2-1.3-2.2-3-2.7M15 15v2c0 1.7-2.7 3-6 3s-6-1.3-6-3v-5">
-     </path>
-    </symbol>
-    <symbol id="icon-briefcase" viewbox="0 0 24 24">
-     <rect height="13" rx="2" width="18" x="3" y="7">
-     </rect>
-     <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2">
-     </path>
-    </symbol>
-    <symbol id="icon-book" viewbox="0 0 24 24">
-     <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z">
-     </path>
-     <path d="M4 5.5V21M8 7h8M8 11h8">
-     </path>
-    </symbol>
-    <symbol id="icon-calculator" viewbox="0 0 24 24">
-     <rect height="19" rx="2" width="14" x="5" y="2.5">
-     </rect>
-     <path d="M8 6h8M8 11h2M14 11h2M8 15h2M14 15h2M8 19h2M14 19h2">
-     </path>
-    </symbol>
-    <symbol id="icon-globe" viewbox="0 0 24 24">
-     <circle cx="12" cy="12" r="9">
-     </circle>
-     <path d="M3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9S14.5 18.4 12 21M12 3C9.5 5.6 8.5 8.6 8.5 12s1 6.4 3.5 9">
-     </path>
-    </symbol>
-    <symbol id="icon-history" viewbox="0 0 24 24">
-     <path d="M3 12a9 9 0 1 0 3-6.7">
-     </path>
-     <path d="M3 4v6h6M12 7v5l3 2">
-     </path>
-    </symbol>
-    <symbol id="icon-leaf" viewbox="0 0 24 24">
-     <path d="M20 4C12 4 6 7 6 14c0 3 2 5 5 5 7 0 9-6 9-15Z">
-     </path>
-     <path d="M4 21c3-5 7-8 12-10">
-     </path>
-    </symbol>
-    <symbol id="icon-camera" viewbox="0 0 24 24">
-     <path d="M4 7h4l1.5-2h5L16 7h4v12H4V7Z">
-     </path>
-     <circle cx="12" cy="13" r="4">
-     </circle>
-    </symbol>
-    <symbol id="icon-school" viewbox="0 0 24 24">
-     <path d="m3 10 9-6 9 6M5 10v9h14v-9M9 19v-5h6v5">
-     </path>
-    </symbol>
-    <symbol id="icon-party" viewbox="0 0 24 24">
-     <path d="m4 20 5-10 7 7-12 3Z">
-     </path>
-     <path d="m14 4 1 3M19 3v4M21 8l-3 1M5 4l1 3M3 8l3 1">
-     </path>
-    </symbol>
-    <symbol id="icon-handshake" viewbox="0 0 24 24">
-     <path d="m3 12 4-4 4 2 2-2 4 1 4 3-3 4-4-2-3 3-4-2-4-3Z">
-     </path>
-     <path d="m7 8 3 4M14 8l-3 4M17 9l-3 3">
-     </path>
-    </symbol>
-    <symbol id="icon-arrow" viewbox="0 0 24 24">
-     <path d="M5 12h13M13 6l6 6-6 6">
-     </path>
-    </symbol>
-    <symbol id="icon-play" viewBox="0 0 24 24">
-     <path d="m9 5 10 7-10 7V5Z">
-     </path>
-    </symbol>
-    <symbol id="icon-pause" viewBox="0 0 24 24">
-     <path d="M8 5v14M16 5v14">
-     </path>
-    </symbol>
-    <symbol id="icon-prev" viewBox="0 0 24 24">
-     <path d="m15 6-6 6 6 6M9 6v12">
-     </path>
-    </symbol>
-    <symbol id="icon-next" viewBox="0 0 24 24">
-     <path d="m9 6 6 6-6 6M15 6v12">
-     </path>
-    </symbol>
-    <symbol id="icon-volume" viewBox="0 0 24 24">
-     <path d="M4 10v4h4l5 4V6l-5 4H4Z">
-     </path>
-     <path d="M17 9a5 5 0 0 1 0 6M19.5 6.5a9 9 0 0 1 0 11">
-     </path>
-    </symbol>
-    <symbol id="icon-volume-off" viewBox="0 0 24 24">
-     <path d="M4 10v4h4l5 4V6l-5 4H4Z">
-     </path>
-     <path d="m18 9 4 6M22 9l-4 6">
-     </path>
-    </symbol>
-    <symbol id="icon-google" viewBox="0 0 24 24"><path d="M21.35 12.27c0-.77-.07-1.52-.22-2.23H12v4.22h5.24a4.49 4.49 0 0 1-1.94 2.95v2.45h3.14c1.84-1.7 2.91-4.2 2.91-7.39Z"></path><path d="M12 21.6c2.64 0 4.86-.87 6.48-2.36l-3.14-2.45c-.87.58-1.98.92-3.34.92-2.57 0-4.75-1.73-5.53-4.06H3.22v2.53A9.79 9.79 0 0 0 12 21.6Z"></path><path d="M6.47 13.65a5.9 5.9 0 0 1 0-3.3V7.82H3.22a9.8 9.8 0 0 0 0 8.36l3.25-2.53Z"></path><path d="M12 6.29c1.44 0 2.73.5 3.75 1.49l2.81-2.81C16.85 3.38 14.63 2.4 12 2.4a9.79 9.79 0 0 0-8.78 5.42l3.25 2.53C7.25 8.02 9.43 6.29 12 6.29Z"></path></symbol>
-    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h3l1.2 4-2 1.4a14.7 14.7 0 0 0 6.4 6.4l1.4-2 4 1.2v3c0 1.1-.9 2-2 2C10.72 19 5 13.28 5 6a2 2 0 0 1 2-2Z"></path></symbol>
-    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></symbol>
-    <symbol id="icon-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M7 9.5c3.7-1.1 7.5-.8 10.3.4M7.5 12.5c3-.8 6.2-.6 8.7.4M8.5 15.3c2.2-.5 4.5-.3 6.4.3"></path></symbol>
-    <symbol id="icon-moon" viewBox="0 0 24 24">
-     <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z">
-     </path>
-    </symbol>
-   </defs>
-  </svg>
-  <div aria-hidden="true" class="loader" id="loader">
-   <div class="loader__box">
-    <img alt="XI IPS 1" class="loader__logo" src="assets/images/logo.svg"/>
-    <p class="eyebrow">
-     XI IPS 1
-    </p>
-    <h2>
-     Menyiapkan Class Portal
-    </h2>
-    <div class="loader__track">
-     <span id="loaderProgress">
-     </span>
-    </div>
-    <span id="loadingText">
-     0%
-    </span>
-   </div>
-  </div>
-  <canvas aria-hidden="true" class="particles" id="particles">
-  </canvas>
-  <div aria-hidden="true" class="background-grid">
-  </div>
-  <div aria-hidden="true" class="ambient ambient--green">
-  </div>
-  <div aria-hidden="true" class="ambient ambient--purple">
-  </div>
-  <div aria-hidden="true" class="aurora-orb aurora-orb--one"></div>
-  <div aria-hidden="true" class="aurora-orb aurora-orb--two"></div>
-  <div aria-hidden="true" class="cursor-light" id="cursorLight"></div>
-  <header class="site-header" id="top">
-   <div class="container nav-wrap">
-    <a aria-label="XI IPS 1 Beranda" class="brand" href="#beranda">
-     <img alt="" class="brand__logo" src="assets/images/logo.svg"/>
-     <span>
-      <strong>
-       XI IPS 1
-      </strong>
-      <small>
-       Class Portal
-      </small>
-     </span>
-    </a>
-    <nav aria-label="Navigasi utama" class="site-nav" id="siteNav">
-     <a href="#beranda">
-      Beranda
-     </a>
-     <a href="#tentang">
-      Tentang
-     </a>
-     <a href="#siswa">
-      Siswa
-     </a>
-     <a href="#jadwal">
-      Jadwal
-     </a>
-      <a href="#galeri">
-      Galeri
-     </a>
-    </nav>
-    <div class="nav-actions">
-     <button aria-label="Ganti tema" class="icon-btn" id="themeButton" type="button">
-      <svg aria-hidden="true" class="pro-icon">
-       <use href="#icon-sun">
-       </use>
-      </svg>
-     </button>
-     <button aria-label="Putar musik" class="icon-btn" id="musicButton" type="button">
-      <svg aria-hidden="true" class="pro-icon">
-       <use href="#icon-play">
-       </use>
-      </svg>
-     </button>
-     <button aria-label="Buka menu" class="icon-btn mobile-only" id="menuButton" type="button">
-      <svg aria-hidden="true" class="pro-icon">
-       <use href="#icon-menu">
-       </use>
-      </svg>
-     </button>
-     <a class="nav-cta" href="#pengumuman">
-      Pengumuman
-     </a>
-    </div>
-   </div>
-  </header>
-  <main>
-   <section class="hero section-anchor" id="beranda">
-    <div class="container hero__grid">
-     <div class="hero__copy reveal">
-      <div class="status-pill">
-       <span class="status-dot">
-       </span>
-       WEBSITE RESMI XI IPS 1
-       <span class="status-arrow">
-        &nearrow;
-       </span>
-      </div>
-      <p class="eyebrow">
-       SCHOOL &bull; COMMUNITY &bull; CREATIVE
-      </p>
-      <h1>
-       Class life,
-       <br/>
-       <span>
-        beautifully organized.
-       </span>
-      </h1>
-      <p class="hero__lead">
-       Satu tempat untuk informasi kelas, jadwal, tugas, kegiatan, dan dokumentasi XI IPS 1.
-      </p>
-      <div class="hero__actions">
-       <a class="btn btn--primary" href="#tentang">
-        Jelajahi kelas
-        <span>
-         &rarr;
-        </span>
-       </a>
-       <a class="btn btn--ghost" href="#siswa">
-        Lihat anggota
-       </a>
-      </div>
-      <div class="hero__meta">
-       <div>
-        <strong data-counter="27">
-         0
-        </strong>
-        <span>
-         Siswa
-        </span>
-       </div>
-       <div>
-        <strong data-counter="12">
-         0
-        </strong>
-        <span>
-         Mata pelajaran
-        </span>
-       </div>
-       <div>
-        <strong data-counter="2026">
-         0
-        </strong>
-        <span>
-         Tahun
-        </span>
-       </div>
-      </div>
-     </div>
-     <div class="hero__visual reveal">
-      <div class="hero-card glass-card">
-       <div class="hero-card__top">
-        <span class="mini-label">
-         CLASS DASHBOARD
-        </span>
-        <span class="live-chip">
-         <i>
-         </i>
-         Live
-        </span>
-       </div>
-       <div class="hero-card__main">
-        <div>
-         <span class="hero-card__kicker">
-          TODAY
-         </span>
-         <h2>
-          Ready to
-          <br/>
-          <span>
-           learn.
-          </span>
-         </h2>
-         <p>
-          Jadwal, tugas, dan informasi kelas tersaji ringkas dalam satu dashboard.
-         </p>
-        </div>
-        <div class="hero-orb">
-         <span>
-          XI
-         </span>
-        </div>
-       </div>
-       <div class="hero-card__stats">
-        <div>
-         <span>
-          Next class
-         </span>
-         <strong id="nextClassName">
-          Memuat...
-         </strong>
-         <small id="nextClassTime">
-          Mengikuti jadwal hari ini
-         </small>
-        </div>
-        <div>
-         <span>
-          Tasks
-         </span>
-         <strong>
-          03 active
-         </strong>
-        </div>
-        <div>
-         <span>
-          Team
-         </span>
-         <strong>
-          XI IPS 1
-         </strong>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="section section-anchor reveal" id="tentang">
-    <div class="container">
-     <div class="section-heading">
-      <div>
-       <p class="eyebrow">
-        01 &mdash; TENTANG KELAS
-       </p>
-       <h2>
-        Satu kelas.
-        <br/>
-        <span>
-         Satu cerita.
-        </span>
-       </h2>
-      </div>
-      <p>
-       Class portal ini dirancang agar informasi kelas terasa rapi, cepat diakses, dan nyaman digunakan di PC maupun smartphone.
-      </p>
-     </div>
-     <div class="feature-grid">
-      <article class="feature-card glass-card reveal">
-       <span class="card-index">
-        01
-       </span>
-       <div class="feature-icon">
-        ◎
-       </div>
-       <h3>
-        Terorganisir
-       </h3>
-       <p>
-        Informasi penting kelas dipisahkan dengan jelas agar mudah dicari.
-       </p>
-      </article>
-      <article class="feature-card glass-card reveal">
-       <span class="card-index">
-        02
-       </span>
-       <div class="feature-icon">
-        <svg aria-hidden="true" class="pro-icon">
-         <use href="#icon-spark">
-         </use>
-        </svg>
-       </div>
-       <h3>
-        Modern
-       </h3>
-       <p>
-        Visual premium dengan liquid glass, neon accent, dan animasi ringan.
-       </p>
-      </article>
-      <article class="feature-card glass-card reveal">
-       <span class="card-index">
-        03
-       </span>
-       <div class="feature-icon">
-        &nearrow;
-       </div>
-       <h3>
-        Mudah dikembangkan
-       </h3>
-       <p>
-        Struktur folder rapi sehingga mudah ditambah halaman dan backend nanti.
-       </p>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section section-anchor reveal" id="siswa">
-    <div class="container">
-     <div class="section-heading">
-      <div>
-       <p class="eyebrow">
-        02 &mdash; ABSENSI SISWA
-       </p>
-       <h2>
-        Daftar
-        <br/>
-        <span>
-         kelas.
-        </span>
-       </h2>
-      </div>
-      <p>
-       Daftar siswa XI IPS 1. Gunakan pencarian untuk menemukan nama dan tombol absensi untuk menandai kehadiran.
-      </p>
-     </div>
-     <div class="toolbar glass-card">
-      <label class="search-field">
-       <span>
-        &telrec;
-       </span>
-       <input id="studentSearch" placeholder="Cari nama siswa..." type="search"/>
-      </label>
-      <select aria-label="Filter jenis kelamin" id="studentFilter">
-       <option value="all">
-        Semua siswa
-       </option>
-       <option value="L">
-        Laki-laki
-       </option>
-       <option value="P">
-        Perempuan
-       </option>
-      </select>
-     </div>
-     <div class="student-grid" id="studentGrid">
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        01
-       </span>
-       <div class="avatar">
-        AR
-       </div>
-       <div class="student-info">
-        <h3>
-         AL SILA RAMADHANI
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        02
-       </span>
-       <div class="avatar">
-        AP
-       </div>
-       <div class="student-info">
-        <h3>
-         ALDIANSYAH PUTRA KUSUMA
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        03
-       </span>
-       <div class="avatar">
-        AA
-       </div>
-       <div class="student-info">
-        <h3>
-         Andin Aulia Agustin
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        04
-       </span>
-       <div class="avatar">
-        AW
-       </div>
-       <div class="student-info">
-        <h3>
-         ANDINI AULIA WIJAYA
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        05
-       </span>
-       <div class="avatar">
-        AL
-       </div>
-       <div class="student-info">
-        <h3>
-         ANJU MAULANA LUMBAN GAUL
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        06
-       </span>
-       <div class="avatar">
-        AF
-       </div>
-       <div class="student-info">
-        <h3>
-         Azka Fina
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        07
-       </span>
-       <div class="avatar">
-        DJ
-       </div>
-       <div class="student-info">
-        <h3>
-         David Jonathan Ketaren
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        08
-       </span>
-       <div class="avatar">
-        FP
-       </div>
-       <div class="student-info">
-        <h3>
-         FILZAH AMARTA PUTRI HIDAYAT
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        09
-       </span>
-       <div class="avatar">
-        HJ
-       </div>
-       <div class="student-info">
-        <h3>
-         HALIMATUL JULHIJAH
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        10
-       </span>
-       <div class="avatar">
-        JT
-       </div>
-       <div class="student-info">
-        <h3>
-         JEREMI THOMAS WARASI
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        11
-       </span>
-       <div class="avatar">
-        LZ
-       </div>
-       <div class="student-info">
-        <h3>
-         Lois Zadol Zai
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        12
-       </span>
-       <div class="avatar">
-        MK
-       </div>
-       <div class="student-info">
-        <h3>
-         Melati Kirana Putri
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        13
-       </span>
-       <div class="avatar">
-        MF
-       </div>
-       <div class="student-info">
-        <h3>
-         MOCH. FAJAR NURJAYADI
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        14
-       </span>
-       <div class="avatar">
-        MR
-       </div>
-       <div class="student-info">
-        <h3>
-         MOCHAMAD RIZKI ADITYA PERMANA
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        15
-       </span>
-       <div class="avatar">
-        MA
-       </div>
-       <div class="student-info">
-        <h3>
-         MUHAMAD ADILLAH KHOIR
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        16
-       </span>
-       <div class="avatar">
-        MH
-       </div>
-       <div class="student-info">
-        <h3>
-         Muhamad Hairil Nur Zaman
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        17
-       </span>
-       <div class="avatar">
-        MR
-       </div>
-       <div class="student-info">
-        <h3>
-         MUHAMAD REVAN AULIA MAKMUR
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        18
-       </span>
-       <div class="avatar">
-        MA
-       </div>
-       <div class="student-info">
-        <h3>
-         Muhammad Azriel Daniyal
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        19
-       </span>
-       <div class="avatar">
-        NO
-       </div>
-       <div class="student-info">
-        <h3>
-         NAZWA OKTAPIYANI
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        20
-       </span>
-       <div class="avatar">
-        RK
-       </div>
-       <div class="student-info">
-        <h3>
-         REJEKI KURNIAWAN WARUWU
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        21
-       </span>
-       <div class="avatar">
-        RF
-       </div>
-       <div class="student-info">
-        <h3>
-         RENO FEDRIAN
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        22
-       </span>
-       <div class="avatar">
-        RA
-       </div>
-       <div class="student-info">
-        <h3>
-         RYAD ZABAL ARASY
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        23
-       </span>
-       <div class="avatar">
-        SA
-       </div>
-       <div class="student-info">
-        <h3>
-         Siti Alayya Zulaikha
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        24
-       </span>
-       <div class="avatar">
-        SD
-       </div>
-       <div class="student-info">
-        <h3>
-         SITI DARA NURHAFNI
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        25
-       </span>
-       <div class="avatar">
-        SP
-       </div>
-       <div class="student-info">
-        <h3>
-         SITI PAUJIAH
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="P">
-       <span class="student-number">
-        26
-       </span>
-       <div class="avatar">
-        SN
-       </div>
-       <div class="student-info">
-        <h3>
-         SYARIFFA NURIL AINI
-        </h3>
-        <p>
-         Perempuan (P)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-      <article class="student-card glass-card" data-gender="L">
-       <span class="student-number">
-        27
-       </span>
-       <div class="avatar">
-        YR
-       </div>
-       <div class="student-info">
-        <h3>
-         YADI ROSDIANSYAH
-        </h3>
-        <p>
-         Laki-laki (L)
-        </p>
-       </div>
-       <button class="attendance-button" type="button">
-        Hadir
-       </button>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section section-anchor reveal" id="jadwal">
-    <div class="container">
-     <div class="section-heading">
-      <div>
-       <p class="eyebrow">
-        03 &mdash; JADWAL PELAJARAN
-       </p>
-       <h2>
-        Weekly
-        <br/>
-        <span>
-         schedule.
-        </span>
-       </h2>
-      </div>
-      <p>
-       Jadwal pelajaran XI IPS 1 dari Senin sampai Jumat. Jam istirahat ditampilkan agar alur kegiatan belajar lebih mudah dilihat.
-      </p>
-     </div>
-     <div class="schedule-list">
-      <article class="schedule-day glass-card">
-       <div class="schedule-day__head">
-        <span class="day-icon">
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-leaf">
-          </use>
-         </svg>
-        </span>
-        <div>
-         <h3>
-          SENIN
-         </h3>
-         <p>
-          07.40 &mdash; 15.30
-         </p>
-        </div>
-       </div>
-       <div class="schedule-items">
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-person">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          PJOK
-         </strong>
-         <time>
-          07.40&ndash;09.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-landmark">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          PKN
-         </strong>
-         <time>
-          09.00&ndash;10.20
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          10.20&ndash;10.50
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-laptop">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Informatika
-         </strong>
-         <time>
-          10.50&ndash;12.10
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-language">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Jepang
-         </strong>
-         <time>
-          12.10&ndash;12.50 &amp; 13.30&ndash;14.10
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          12.50&ndash;13.30
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-church">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          PAI / Kristen
-         </strong>
-         <time>
-          14.10&ndash;15.30
-         </time>
-        </div>
-       </div>
-      </article>
-      <article class="schedule-day glass-card">
-       <div class="schedule-day__head">
-        <span class="day-icon">
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-spark">
-          </use>
-         </svg>
-        </span>
-        <div>
-         <h3>
-          SELASA
-         </h3>
-         <p>
-          07.40 &mdash; 15.30
-         </p>
-        </div>
-       </div>
-       <div class="schedule-items">
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-users">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Sosiologi
-         </strong>
-         <time>
-          07.40&ndash;09.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-language">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Jepang
-         </strong>
-         <time>
-          09.00&ndash;10.20
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          10.20&ndash;10.50
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-palette">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Seni Budaya
-         </strong>
-         <time>
-          10.50&ndash;12.10
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coins">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Ekonomi
-         </strong>
-         <time>
-          12.10&ndash;12.50 &amp; 13.30&ndash;14.10
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          12.50&ndash;13.30
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-briefcase">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          BK
-         </strong>
-         <time>
-          14.10&ndash;14.50
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-book">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          BTQ
-         </strong>
-         <time>
-          14.50&ndash;15.30
-         </time>
-        </div>
-       </div>
-      </article>
-      <article class="schedule-day glass-card">
-       <div class="schedule-day__head">
-        <span class="day-icon">
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-leaf">
-          </use>
-         </svg>
-        </span>
-        <div>
-         <h3>
-          RABU
-         </h3>
-         <p>
-          07.40 &mdash; 15.30
-         </p>
-        </div>
-       </div>
-       <div class="schedule-items">
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-users">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Sosiologi
-         </strong>
-         <time>
-          07.40&ndash;09.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-calculator">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Matematika
-         </strong>
-         <time>
-          09.00&ndash;09.40
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-landmark">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Indonesia
-         </strong>
-         <time>
-          09.40&ndash;10.20 &amp; 10.50&ndash;12.10
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          10.20&ndash;10.50
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-laptop">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Informatika
-         </strong>
-         <time>
-          12.10&ndash;12.50 &amp; 13.30&ndash;14.10
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          12.50&ndash;13.30
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-history">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Sejarah
-         </strong>
-         <time>
-          14.10&ndash;15.30
-         </time>
-        </div>
-       </div>
-      </article>
-      <article class="schedule-day glass-card">
-       <div class="schedule-day__head">
-        <span class="day-icon">
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-leaf">
-          </use>
-         </svg>
-        </span>
-        <div>
-         <h3>
-          KAMIS
-         </h3>
-         <p>
-          07.40 &mdash; 15.30
-         </p>
-        </div>
-       </div>
-       <div class="schedule-items">
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-language">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Inggris
-         </strong>
-         <time>
-          07.40&ndash;09.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-leaf">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Sunda
-         </strong>
-         <time>
-          09.00&ndash;10.20
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          10.20&ndash;10.50
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-calculator">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Matematika
-         </strong>
-         <time>
-          10.50&ndash;12.10
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-globe">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Geografi
-         </strong>
-         <time>
-          12.10&ndash;12.50 &amp; 13.30&ndash;14.10
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          12.50&ndash;13.30
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-language">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          B. Mandarin
-         </strong>
-         <time>
-          14.10&ndash;15.30
-         </time>
-        </div>
-       </div>
-      </article>
-      <article class="schedule-day glass-card schedule-day--friday">
-       <div class="schedule-day__head">
-        <span class="day-icon">
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-spark">
-          </use>
-         </svg>
-        </span>
-        <div>
-         <h3>
-          JUMAT
-         </h3>
-         <p>
-          07.40 &mdash; 11.20
-         </p>
-        </div>
-       </div>
-       <div class="schedule-items">
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coins">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Ekonomi
-         </strong>
-         <time>
-          07.40&ndash;09.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-globe">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Geografi
-         </strong>
-         <time>
-          09.00&ndash;09.40 &amp; 10.00&ndash;10.40
-         </time>
-        </div>
-        <div class="schedule-item break">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-coffee">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Istirahat
-         </strong>
-         <time>
-          09.40&ndash;10.00
-         </time>
-        </div>
-        <div class="schedule-item">
-         <span>
-          <svg aria-hidden="true" class="pro-icon">
-           <use href="#icon-book">
-           </use>
-          </svg>
-         </span>
-         <strong>
-          Klinik Belajar
-         </strong>
-         <time>
-          10.40&ndash;11.20
-         </time>
-        </div>
-       </div>
-      </article>
-     </div>
-     <div class="schedule-note glass-card">
-      <span>
-       <svg aria-hidden="true" class="pro-icon">
-        <use href="#icon-spark">
-        </use>
-       </svg>
-      </span>
-      <strong>
-       Semangat belajar!
-      </strong>
-      <p>
-       <svg aria-hidden="true" class="pro-icon">
-        <use href="#icon-book">
-        </use>
-       </svg>
-       Gunakan jadwal ini sebagai panduan kegiatan belajar XI IPS 1.
-      </p>
-     </div>
-    </div>
-   </section>
-   <section class="section section-anchor reveal" id="galeri">
-    <div class="container">
-     <div class="section-heading">
-      <div>
-       <p class="eyebrow">
-        04 &mdash; GALERI
-       </p>
-       <h2>
-        Class
-        <br/>
-        <span>
-         moments.
-        </span>
-       </h2>
-      </div>
-      <p>
-       Kartu galeri siap dihubungkan ke foto kelas asli melalui folder assets.
-      </p>
-     </div>
-     <div class="gallery-grid">
-      <button class="gallery-card" data-icon="camera" data-title="Kegiatan Kelas" type="button">
-       <div class="gallery-art gallery-art--green">
-        <svg aria-hidden="true" class="pro-icon">
-         <use href="#icon-camera">
-         </use>
-        </svg>
-       </div>
-       <span>
-        Kegiatan Kelas
-        <b>
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-arrow">
-          </use>
-         </svg>
-        </b>
-       </span>
-      </button>
-      <button class="gallery-card" data-icon="school" data-title="Lingkungan Sekolah" type="button">
-       <div class="gallery-art gallery-art--blue">
-        <svg aria-hidden="true" class="pro-icon">
-         <use href="#icon-school">
-         </use>
-        </svg>
-       </div>
-       <span>
-        Lingkungan Sekolah
-        <b>
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-arrow">
-          </use>
-         </svg>
-        </b>
-       </span>
-      </button>
-      <button class="gallery-card" data-icon="party" data-title="Acara Kelas" type="button">
-       <div class="gallery-art gallery-art--amber">
-        <svg aria-hidden="true" class="pro-icon">
-         <use href="#icon-party">
-         </use>
-        </svg>
-       </div>
-       <span>
-        Acara Kelas
-        <b>
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-arrow">
-          </use>
-         </svg>
-        </b>
-       </span>
-      </button>
-      <button class="gallery-card" data-icon="handshake" data-title="Kebersamaan" type="button">
-       <div class="gallery-art gallery-art--purple">
-        <svg aria-hidden="true" class="pro-icon">
-         <use href="#icon-handshake">
-         </use>
-        </svg>
-       </div>
-       <span>
-        Kebersamaan
-        <b>
-         <svg aria-hidden="true" class="pro-icon">
-          <use href="#icon-arrow">
-          </use>
-         </svg>
-        </b>
-       </span>
-      </button>
-     </div>
-    </div>
-   </section>
-   <section class="section section-anchor reveal" id="pengumuman">
-    <div class="container">
-     <div class="announcement glass-card">
-      <div>
-       <p class="eyebrow">
-        CLASS ANNOUNCEMENT
-       </p>
-       <h2>
-        Keep everyone
-        <br/>
-        <span>
-         in the loop.
-        </span>
-       </h2>
-       <p>
-        Gunakan bagian ini untuk pengumuman kelas, agenda penting, atau informasi guru.
-       </p>
-      </div>
-      <button class="btn btn--primary announcement-button" type="button">
-       Lihat pengumuman
-       <span>
-        &nearrow;
-       </span>
-      </button>
-     </div>
-    </div>
-   </section>
-   <section class="closing">
-    <div class="container closing__inner">
-     <p class="eyebrow">
-      XI IPS 1
-     </p>
-     <h2>
-      Learn together.
-      <br/>
-      <span>
-       Grow together.
-      </span>
-     </h2>
-     <p>
-      Website kelas dibuat oleh Aldiansyah.
-     </p>
-     <a class="btn btn--primary" href="#top">
-      Kembali ke atas &uarr;
-     </a>
-    </div>
-   </section>
-  </main>
-  <footer class="site-footer">
-   <div class="container footer-grid">
-    <div>
-     <a class="brand" href="#beranda">
-      <img alt="" class="brand__logo" src="assets/images/logo.svg"/>
-      <span>
-       <strong>
-        XI IPS 1
-       </strong>
-       <small>
-        Class Portal
-       </small>
-      </span>
-     </a>
-     <p class="footer-note">
-      Portal kelas untuk informasi, tugas, jadwal, dan dokumentasi.
-     </p>
-    </div>
-    <div>
-     <h4>
-      Menu
-     </h4>
-     <a href="#tentang">
-      Tentang
-     </a>
-     <a href="#siswa">
-      Siswa
-     </a>
-     <a href="#jadwal">
-      Jadwal
-     </a>
-    </div>
-    <div>
-     <h4>
-      Class
-     </h4>
-      <a href="#galeri">
-      Galeri
-     </a>
-     <a href="#pengumuman">
-      Pengumuman
-     </a>
-    </div>
-    <div>
-     <h4>
-      Project
-     </h4>
-     <span>
-      HTML &bull; CSS &bull; JS
-     </span>
-     <span>
-      Responsive UI
-     </span>
-     <span>
-      Made for XI IPS 1
-     </span>
-    </div>
-   </div>
-   <div class="container footer-bottom">
-    <span>
-     &copy; 2026 XI IPS 1
-    </span>
-    <span>
-     Created by Aldiansyah
-    </span>
-   </div>
-  </footer>
-  <div aria-hidden="true" class="modal" id="galleryModal">
-   <button aria-label="Tutup" class="modal__close" id="modalClose" type="button">
-    &times;
-   </button>
-   <div class="modal__card">
-    <div class="modal__icon" id="modalIcon">
-     <svg aria-hidden="true" class="pro-icon">
-      <use href="#icon-camera">
-      </use>
-     </svg>
-    </div>
-    <p class="eyebrow">
-     GALLERY
-    </p>
-    <h2 id="modalTitle">
-     Galeri XI IPS 1
-    </h2>
-    <p>
-     Area ini siap diisi foto kelas asli.
-    </p>
-   </div>
-  </div>
-  <div aria-hidden="true" class="modal spotify-login-modal" id="spotifyLoginModal">
-   <button aria-label="Tutup login Spotify" class="modal__close" id="spotifyLoginClose" type="button">&times;</button>
-   <div class="modal__card spotify-login-card">
-    <div class="spotify-brand-mark"><svg class="pro-icon" aria-hidden="true"><use href="#icon-spotify"></use></svg></div>
-    <p class="eyebrow">SPOTIFY CONNECT</p>
-    <h2>Masuk ke Spotify</h2>
-    <p class="spotify-login-note">Pilih metode login. Kredensial akan diproses oleh halaman resmi Spotify.</p>
-    <div class="spotify-login-options">
-     <button class="spotify-login-option spotify-login-option--spotify" data-login-method="spotify" type="button"><svg class="pro-icon"><use href="#icon-spotify"></use></svg><span>Lanjutkan dengan Spotify</span></button>
-     <button class="spotify-login-option" data-login-method="google" type="button"><svg class="pro-icon"><use href="#icon-google"></use></svg><span>Lanjutkan dengan Google</span></button>
-     <button class="spotify-login-option" data-login-method="phone" type="button"><svg class="pro-icon"><use href="#icon-phone"></use></svg><span>Lanjutkan dengan nomor telepon</span></button>
-     <button class="spotify-login-option" data-login-method="email" type="button"><svg class="pro-icon"><use href="#icon-mail"></use></svg><span>Lanjutkan dengan email</span></button>
-    </div>
-    <p class="spotify-login-footnote">Website ini tidak meminta atau menyimpan password Spotify.</p>
-   </div>
-  </div>
-  <div aria-label="Pemutar musik XI IPS 1" class="music-player" id="musicPlayer">
-   <div class="music-player__top">
-    <div aria-hidden="true" class="music-player__cover" id="musicCover"><svg class="pro-icon"><use href="#icon-music"></use></svg></div>
-    <div class="music-player__meta"><span class="music-player__label">NOW PLAYING</span><strong id="musicTitle">Night Study</strong><small id="musicArtist">XI IPS 1 • Local Playlist</small></div>
-    <button aria-label="Buka playlist" class="music-icon-btn" id="musicPlaylistToggle" type="button"><svg class="pro-icon"><use href="#icon-list"></use></svg></button><button aria-label="Login Spotify" class="music-icon-btn music-login-btn" id="spotifyLoginButton" type="button"><svg class="pro-icon"><use href="#icon-person"></use></svg></button>
-   </div>
-   <div class="music-player__search"><svg class="pro-icon"><use href="#icon-search"></use></svg><input id="musicSearch" type="search" placeholder="Cari lagu..." autocomplete="off"></div>
-   <div class="music-playlist" id="musicPlaylist" aria-label="Daftar lagu"></div>
-   <div class="music-player__progress-row"><span id="musicCurrent">0:00</span><input aria-label="Progress musik" id="musicProgress" max="100" min="0" step="0.1" type="range" value="0"/><span id="musicDuration">0:00</span></div>
-   <div class="music-visualizer" id="musicVisualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-   <div class="music-player__controls">
-    <button aria-label="Acak lagu" class="music-icon-btn" id="musicShuffle" type="button"><svg class="pro-icon"><use href="#icon-shuffle"></use></svg></button>
-    <button aria-label="Lagu sebelumnya" class="music-icon-btn" id="musicPrev" type="button"><svg class="pro-icon"><use href="#icon-prev"></use></svg></button>
-    <button aria-label="Putar musik" class="music-main-btn" id="musicPlay" type="button"><svg class="pro-icon"><use href="#icon-play"></use></svg></button>
-    <button aria-label="Lagu berikutnya" class="music-icon-btn" id="musicNext" type="button"><svg class="pro-icon"><use href="#icon-next"></use></svg></button>
-    <button aria-label="Ulangi lagu" class="music-icon-btn" id="musicRepeat" type="button"><svg class="pro-icon"><use href="#icon-repeat"></use></svg></button>
-   </div>
-   <div class="music-player__bottom"><button aria-label="Matikan suara" class="music-icon-btn" id="musicMute" type="button"><svg class="pro-icon"><use href="#icon-volume"></use></svg></button><input aria-label="Volume musik" id="musicVolume" max="1" min="0" step="0.01" type="range" value="0.65"/><span class="music-track-count" id="musicTrackCount">1 / 2</span></div>
-   <audio id="backgroundMusic" preload="metadata"></audio>
-  </div>
-  <div class="toast" id="toast">
-   <span>
-    <svg aria-hidden="true" class="pro-icon">
-     <use href="#icon-spark">
-     </use>
-    </svg>
-   </span>
-   <div>
-    <strong>
-     Info
-    </strong>
-    <p>
-     Pesan
-    </p>
-   </div>
-  </div>
-  
-<script src="./js/app.js"></script>
-<script src="./js/spotify-config.js"></script>
-<script src="./js/spotify.js"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- </body>
+<title>XI IPS 1 — Spotify</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(30,215,96,.15),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(80,50,180,.15),transparent 30%),
+        #080b0a;
+    color:white;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+header{
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#1ed760;
+}
+
+.nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.nav a:hover{
+    color:#1ed760;
+}
+
+main{
+    padding:70px 0;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.hero small{
+    color:#1ed760;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:clamp(40px,7vw,80px);
+    margin:15px 0;
+}
+
+.hero h1 span{
+    color:#1ed760;
+}
+
+.hero p{
+    color:#999;
+}
+
+.spotify-login-box{
+    max-width:650px;
+    margin:auto;
+    padding:50px 30px;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:28px;
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4);
+}
+
+.spotify-logo{
+    width:80px;
+    height:80px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#1ed760;
+
+    color:#000;
+
+    font-size:40px;
+    font-weight:900;
+
+    box-shadow:
+        0 0 45px rgba(30,215,96,.4);
+}
+
+.spotify-login-box h2{
+    font-size:32px;
+    margin:22px 0 10px;
+}
+
+.spotify-login-box p{
+    color:#999;
+}
+
+.spotify-login-btn{
+    margin-top:25px;
+
+    padding:15px 28px;
+
+    border:0;
+    border-radius:30px;
+
+    background:#1ed760;
+    color:#000;
+
+    font-weight:800;
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.spotify-login-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 35px rgba(30,215,96,.35);
+}
+
+.spotify-message{
+    margin-top:15px;
+    min-height:20px;
+}
+
+.spotify-profile{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(20px);
+}
+
+.profile-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.spotify-avatar{
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:#222;
+}
+
+.spotify-label{
+    display:block;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#1ed760;
+
+    font-weight:800;
+}
+
+.spotify-profile h2{
+    margin:5px 0;
+}
+
+.spotify-profile p{
+    color:#999;
+}
+
+.spotify-logout{
+    padding:10px 18px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.spotify-content{
+    margin-top:35px;
+}
+
+.playlist-heading{
+    margin-bottom:20px;
+}
+
+.playlist-heading h2{
+    margin:7px 0;
+    font-size:30px;
+}
+
+.playlist-heading p{
+    color:#888;
+}
+
+.spotify-playlist{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(230px,1fr));
+
+    gap:18px;
+}
+
+.spotify-playlist-card{
+    position:relative;
+
+    padding:15px;
+
+    background:rgba(255,255,255,.055);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.spotify-playlist-card:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(30,215,96,.4);
+
+    background:rgba(30,215,96,.08);
+}
+
+.playlist-cover{
+    width:100%;
+
+    aspect-ratio:1;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    margin-bottom:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1ed760,
+            #111
+        );
+}
+
+.playlist-cover img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.playlist-cover-placeholder{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:45px;
+
+    color:#1ed760;
+}
+
+.spotify-playlist-card h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.spotify-playlist-card p{
+    color:#888;
+    font-size:13px;
+}
+
+.local-badge{
+    position:absolute;
+
+    top:12px;
+    left:12px;
+
+    padding:5px 9px;
+
+    border-radius:8px;
+
+    background:#1ed760;
+    color:#000;
+
+    font-size:9px;
+    font-weight:900;
+
+    z-index:2;
+}
+
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    color:#666;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width:600px){
+
+    .nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav a{
+        margin:0 7px;
+        font-size:13px;
+    }
+
+    .spotify-profile{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .spotify-logout{
+        width:100%;
+    }
+
+    .spotify-playlist{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<div class="logo">
+XI <span>IPS 1</span>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#spotify">Spotify</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main id="home">
+
+<div class="container">
+
+<section class="hero">
+
+<small>XI IPS 1 • MUSIC</small>
+
+<h1>
+Music
+<span>Connected.</span>
+</h1>
+
+<p>
+Hubungkan akun Spotify untuk melihat profil dan playlist.
+</p>
+
+</section>
+
+
+<section id="spotify">
+
+
+<!-- LOGIN -->
+
+<div
+id="spotifyLoginBox"
+class="spotify-login-box"
+>
+
+<div class="spotify-logo">
+S
+</div>
+
+<h2>Spotify</h2>
+
+<p>
+Hubungkan akun Spotify kamu
+untuk melihat playlist.
+</p>
+
+<button
+id="spotifyLogin"
+class="spotify-login-btn"
+type="button"
+>
+Login dengan Spotify
+</button>
+
+<p
+id="spotifyMessage"
+class="spotify-message"
+></p>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div
+id="spotifyProfile"
+class="spotify-profile"
+style="display:none;"
+>
+
+<div class="profile-left">
+
+<img
+id="spotifyUserImage"
+class="spotify-avatar"
+src=""
+alt="Profile Spotify"
+/>
+
+<div>
+
+<span class="spotify-label">
+SPOTIFY ACCOUNT
+</span>
+
+<h2 id="spotifyUserName">
+Spotify User
+</h2>
+
+<p id="spotifyUserEmail">
+-
+</p>
+
+</div>
+
+</div>
+
+<button
+id="spotifyLogout"
+class="spotify-logout"
+type="button"
+>
+Logout
+</button>
+
+</div>
+
+
+<!-- PLAYLIST -->
+
+<div
+id="spotifyContent"
+class="spotify-content"
+style="display:none;"
+>
+
+<div class="playlist-heading">
+
+<span class="spotify-label">
+MUSIC
+</span>
+
+<h2>
+Playlist Spotify
+</h2>
+
+<p id="playlistCount">
+Memuat playlist...
+</p>
+
+</div>
+
+<div
+id="spotifyPlaylist"
+class="spotify-playlist"
+></div>
+
+</div>
+
+
+</section>
+
+</div>
+
+</main>
+
+
+<footer>
+
+XI IPS 1
+<br>
+Created by Aldiansyah
+
+</footer>
+
+
+<script>
+
+"use strict";
+
+
+/* =====================================
+   SPOTIFY CONFIG
+===================================== */
+
+const CLIENT_ID =
+"a5dd486ff00a4694b004bb9b3d583591";
+
+const REDIRECT_URI =
+"https://aldi-web969.github.io/XI-IPS-1/";
+
+const SCOPES = [
+"user-read-private",
+"user-read-email",
+"playlist-read-private",
+"playlist-read-collaborative"
+].join(" ");
+
+
+const STORAGE = {
+
+state:
+"xi_spotify_state",
+
+verifier:
+"xi_spotify_verifier",
+
+accessToken:
+"xi_spotify_access_token",
+
+expires:
+"xi_spotify_expires"
+
+};
+
+
+/* =====================================
+   LOCAL SONG
+===================================== */
+
+const LOCAL_PLAYLIST = [
+
+{
+name:"Lagu XI IPS 1",
+artist:"XI IPS 1",
+file:"assets/audio/lagu1.mp3"
+},
+
+{
+name:"Lagu Favorit XI IPS 1",
+artist:"XI IPS 1",
+file:"assets/audio/lagu2.mp3"
+}
+
+];
+
+
+/* =====================================
+   RANDOM STRING
+===================================== */
+
+function randomString(length){
+
+const chars =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+const array =
+new Uint8Array(length);
+
+crypto.getRandomValues(array);
+
+return Array.from(array)
+.map(x => chars[x % chars.length])
+.join("");
+
+}
+
+
+/* =====================================
+   PKCE
+===================================== */
+
+async function createChallenge(verifier){
+
+const data =
+new TextEncoder()
+.encode(verifier);
+
+const hash =
+await crypto.subtle.digest(
+"SHA-256",
+data
+);
+
+const bytes =
+new Uint8Array(hash);
+
+let binary = "";
+
+bytes.forEach(
+byte =>
+binary += String.fromCharCode(byte)
+);
+
+return btoa(binary)
+.replace(/\+/g,"-")
+.replace(/\//g,"_")
+.replace(/=/g,"");
+
+}
+
+
+/* =====================================
+   LOGIN
+===================================== */
+
+async function loginSpotify(){
+
+try{
+
+const verifier =
+randomString(96);
+
+const state =
+randomString(32);
+
+const challenge =
+await createChallenge(verifier);
+
+
+localStorage.setItem(
+STORAGE.verifier,
+verifier
+);
+
+localStorage.setItem(
+STORAGE.state,
+state
+);
+
+
+const params =
+new URLSearchParams({
+
+client_id:CLIENT_ID,
+
+response_type:"code",
+
+redirect_uri:REDIRECT_URI,
+
+scope:SCOPES,
+
+state:state,
+
+code_challenge_method:"S256",
+
+code_challenge:challenge
+
+});
+
+
+window.location.href =
+"https://accounts.spotify.com/authorize?"
++
+params.toString();
+
+}catch(error){
+
+console.error(error);
+
+showMessage(
+"Login Spotify gagal dimulai."
+);
+
+}
+
+}
+
+
+/* =====================================
+   CALLBACK
+===================================== */
+
+async function handleCallback(){
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const code =
+params.get("code");
+
+const state =
+params.get("state");
+
+const error =
+params.get("error");
+
+
+if(!code && !error)
+return false;
+
+
+if(error){
+
+clearOAuth();
+
+cleanURL();
+
+showMessage(
+"Login Spotify dibatalkan."
+);
+
+return true;
+
+}
+
+
+const savedState =
+localStorage.getItem(
+STORAGE.state
+);
+
+
+if(
+!savedState ||
+!state ||
+savedState !== state
+){
+
+console.error(
+"STATE MISMATCH"
+);
+
+clearOAuth();
+
+cleanURL();
+
+showMessage(
+"Login gagal: state tidak cocok."
+);
+
+return true;
+
+}
+
+
+const verifier =
+localStorage.getItem(
+STORAGE.verifier
+);
+
+
+if(!verifier){
+
+showMessage(
+"Code verifier tidak ditemukan."
+);
+
+return true;
+
+}
+
+
+try{
+
+const token =
+await exchangeToken(
+code,
+verifier
+);
+
+
+saveToken(token);
+
+clearOAuth();
+
+cleanURL();
+
+await loadAccount();
+
+return true;
+
+}catch(error){
+
+console.error(error);
+
+clearOAuth();
+
+cleanURL();
+
+showMessage(
+"Login Spotify gagal."
+);
+
+return true;
+
+}
+
+}
+
+
+/* =====================================
+   TOKEN
+===================================== */
+
+async function exchangeToken(
+code,
+verifier
+){
+
+const body =
+new URLSearchParams({
+
+client_id:CLIENT_ID,
+
+grant_type:"authorization_code",
+
+code:code,
+
+redirect_uri:REDIRECT_URI,
+
+code_verifier:verifier
+
+});
+
+
+const response =
+await fetch(
+"https://accounts.spotify.com/api/token",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+
+body:body
+
+}
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok){
+
+throw new Error(
+data.error_description ||
+"Token gagal."
+);
+
+}
+
+
+return data;
+
+}
+
+
+function saveToken(token){
+
+localStorage.setItem(
+STORAGE.accessToken,
+token.access_token
+);
+
+localStorage.setItem(
+STORAGE.expires,
+
+Date.now() +
+(
+(token.expires_in || 3600)
+* 1000
+)
+
+);
+
+}
+
+
+function getToken(){
+
+const token =
+localStorage.getItem(
+STORAGE.accessToken
+);
+
+const expires =
+Number(
+localStorage.getItem(
+STORAGE.expires
+)
+);
+
+
+if(!token)
+return null;
+
+
+if(
+expires &&
+Date.now() >= expires
+){
+
+localStorage.removeItem(
+STORAGE.accessToken
+);
+
+localStorage.removeItem(
+STORAGE.expires
+);
+
+return null;
+
+}
+
+
+return token;
+
+}
+
+
+/* =====================================
+   SPOTIFY API
+===================================== */
+
+async function api(
+endpoint,
+token
+){
+
+const response =
+await fetch(
+"https://api.spotify.com/v1"
++
+endpoint,
+{
+
+headers:{
+Authorization:
+`Bearer ${token}`
+}
+
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Spotify API error"
+);
+
+}
+
+
+return response.json();
+
+}
+
+
+/* =====================================
+   ACCOUNT
+===================================== */
+
+async function loadAccount(){
+
+const token =
+getToken();
+
+
+if(!token){
+
+showLogin();
+
+return;
+
+}
+
+
+try{
+
+const profile =
+await api(
+"/me",
+token
+);
+
+showProfile(profile);
+
+
+const playlists =
+await getPlaylists(token);
+
+
+renderPlaylists(
+playlists
+);
+
+
+}catch(error){
+
+console.error(error);
+
+logoutSpotify();
+
+}
+
+}
+
+
+/* =====================================
+   PLAYLIST
+===================================== */
+
+async function getPlaylists(token){
+
+let playlists = [];
+
+let url =
+"/me/playlists?limit=50";
+
+
+while(url){
+
+const response =
+await api(
+url,
+token
+);
+
+
+if(response.items){
+
+playlists.push(
+...response.items
+);
+
+}
+
+
+if(response.next){
+
+const next =
+new URL(response.next);
+
+url =
+next.pathname +
+next.search;
+
+}else{
+
+url = null;
+
+}
+
+}
+
+
+return playlists;
+
+}
+
+
+/* =====================================
+   RENDER
+===================================== */
+
+function renderPlaylists(
+playlists
+){
+
+const container =
+document.getElementById(
+"spotifyPlaylist"
+);
+
+
+container.innerHTML = "";
+
+
+LOCAL_PLAYLIST.forEach(
+song => {
+
+container.appendChild(
+createLocalSong(song)
+);
+
+}
+);
+
+
+playlists.forEach(
+playlist => {
+
+container.appendChild(
+createSpotifyPlaylist(
+playlist
+)
+);
+
+}
+);
+
+
+const count =
+document.getElementById(
+"playlistCount"
+);
+
+
+count.textContent =
+`${playlists.length} playlist Spotify + 2 lagu lokal`;
+
+}
+
+
+/* =====================================
+   LOCAL SONG
+===================================== */
+
+function createLocalSong(song){
+
+const card =
+document.createElement("div");
+
+card.className =
+"spotify-playlist-card";
+
+
+card.innerHTML = `
+
+<div class="local-badge">
+LOCAL
+</div>
+
+<div class="playlist-cover">
+
+<div class="playlist-cover-placeholder">
+♪
+</div>
+
+</div>
+
+<h3>
+${escapeHTML(song.name)}
+</h3>
+
+<p>
+${escapeHTML(song.artist)}
+</p>
+
+`;
+
+
+card.onclick =
+() => playLocalSong(song);
+
+
+return card;
+
+}
+
+
+/* =====================================
+   SPOTIFY PLAYLIST
+===================================== */
+
+function createSpotifyPlaylist(
+playlist
+){
+
+const card =
+document.createElement("div");
+
+card.className =
+"spotify-playlist-card";
+
+
+const image =
+playlist.images?.[0]?.url;
+
+
+card.innerHTML = `
+
+<div class="playlist-cover">
+
+${
+image
+
+?
+
+`<img
+src="${escapeHTML(image)}"
+alt=""
+>`
+
+:
+
+`
+
+<div class="playlist-cover-placeholder">
+♫
+</div>
+
+`
+}
+
+</div>
+
+<h3>
+${escapeHTML(playlist.name)}
+</h3>
+
+<p>
+${playlist.tracks?.total || 0}
+lagu
+</p>
+
+`;
+
+
+card.onclick = () => {
+
+if(
+playlist.external_urls?.spotify
+){
+
+window.open(
+playlist.external_urls.spotify,
+"_blank"
+);
+
+}
+
+};
+
+
+return card;
+
+}
+
+
+/* =====================================
+   PROFILE
+===================================== */
+
+function showProfile(profile){
+
+document.getElementById(
+"spotifyLoginBox"
+).style.display =
+"none";
+
+
+document.getElementById(
+"spotifyProfile"
+).style.display =
+"flex";
+
+
+document.getElementById(
+"spotifyContent"
+).style.display =
+"block";
+
+
+document.getElementById(
+"spotifyUserName"
+).textContent =
+profile.display_name ||
+"Spotify User";
+
+
+document.getElementById(
+"spotifyUserEmail"
+).textContent =
+profile.email ||
+"Akun Spotify";
+
+
+if(profile.images?.length){
+
+document.getElementById(
+"spotifyUserImage"
+).src =
+profile.images[0].url;
+
+}
+
+}
+
+
+/* =====================================
+   SHOW LOGIN
+===================================== */
+
+function showLogin(){
+
+document.getElementById(
+"spotifyLoginBox"
+).style.display =
+"block";
+
+
+document.getElementById(
+"spotifyProfile"
+).style.display =
+"none";
+
+
+document.getElementById(
+"spotifyContent"
+).style.display =
+"none";
+
+}
+
+
+/* =====================================
+   LOGOUT
+===================================== */
+
+function logoutSpotify(){
+
+localStorage.removeItem(
+STORAGE.accessToken
+);
+
+localStorage.removeItem(
+STORAGE.expires
+);
+
+clearOAuth();
+
+showLogin();
+
+document.getElementById(
+"spotifyPlaylist"
+).innerHTML = "";
+
+showMessage(
+"Logout berhasil."
+);
+
+}
+
+
+/* =====================================
+   UTILITY
+===================================== */
+
+function clearOAuth(){
+
+localStorage.removeItem(
+STORAGE.state
+);
+
+localStorage.removeItem(
+STORAGE.verifier
+);
+
+}
+
+
+function cleanURL(){
+
+window.history.replaceState(
+{},
+document.title,
+window.location.origin +
+window.location.pathname
+);
+
+}
+
+
+function showMessage(message){
+
+const element =
+document.getElementById(
+"spotifyMessage"
+);
+
+element.textContent =
+message;
+
+}
+
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================
+   INIT
+===================================== */
+
+async function init(){
+
+document.getElementById(
+"spotifyLogin"
+).addEventListener(
+"click",
+loginSpotify
+);
+
+
+document.getElementById(
+"spotifyLogout"
+).addEventListener(
+"click",
+logoutSpotify
+);
+
+
+const callback =
+await handleCallback();
+
+
+if(callback)
+return;
+
+
+if(getToken()){
+
+await loadAccount();
+
+}else{
+
+showLogin();
+
+}
+
+}
+
+
+document.addEventListener(
+"DOMContentLoaded",
+init
+);
+
+</script>
+
+</body>
 </html>
