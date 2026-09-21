@@ -390,6 +390,125 @@ document.addEventListener('DOMContentLoaded', () => {
     audio?.addEventListener('ended',()=>changeTrack(1));audio?.addEventListener('play',()=>{musicPlayer?.classList.add('is-playing');updatePlayerState()});audio?.addEventListener('pause',()=>{musicPlayer?.classList.remove('is-playing');updatePlayerState()});
     if(audio)audio.volume=lastVolume;renderTrack();updatePlayerState();
 
+
+
+    // ------------------------------------------------------------
+    // Spin Kelompok — real canvas wheel
+    // ------------------------------------------------------------
+    const groupWheel = document.getElementById('groupWheel');
+    const spinButton = document.getElementById('spinButton');
+    const spinReset = document.getElementById('spinReset');
+    const groupCountSelect = document.getElementById('groupCount');
+    const spinResult = document.getElementById('spinResult');
+    const spinStatus = document.getElementById('spinStatus');
+    const spinRemaining = document.getElementById('spinRemaining');
+    const spinPicked = document.getElementById('spinPicked');
+    const spinTotal = document.getElementById('spinTotal');
+    const groupList = document.getElementById('groupList');
+
+    const groupStudents = [
+      'AL SILA RAMADHANI','ALDIANSYAH PUTRA KUSUMA','Andin Aulia Agustin','ANDINI AULIA WIJAYA',
+      'ANJU MAULANA LUMBAN GAUL','Azka Fina','David Jonathan Ketaren','FILZAH AMARTA PUTRI HIDAYAT',
+      'HALIMATUL JULHIJAH','JEREMI THOMAS WARASI','Lois Zadol Zai','Melati Kirana Putri',
+      'MOCH. FAJAR NURJAYADI','MOCHAMAD RIZKI ADITYA PERMANA','MUHAMAD ADILLAH KHOIR','Muhamad Hairil Nur Zaman',
+      'MUHAMAD REVAN AULIA MAKMUR','Muhammad Azriel Daniyal','NAZWA OKTAPIYANI','REJEKI KURNIAWAN WARUWU',
+      'RENO FEDRIAN','RYAD ZABAL ARASY','Siti Alayya Zulaikha','SITI DARA NURHAFNI',
+      'SITI PAUJIAH','SYARIFFA NURIL AINI','YADI ROSDIANSYAH'
+    ];
+
+    if (groupWheel && spinButton && groupList) {
+      const ctx = groupWheel.getContext('2d');
+      const TAU = Math.PI * 2;
+      const wheelColors = ['#8cff98','#59bfff','#8d7cff','#ffca63','#72e7c2','#ff8db4','#9ed0ff','#c5ffca'];
+      let availableStudents = [...groupStudents];
+      let pickedStudents = [];
+      let assignedGroups = [];
+      let rotation = 0;
+      let spinning = false;
+      let animationFrame = null;
+
+      const shortName = (name) => name.length > 20 ? `${name.slice(0,18)}…` : name;
+      const resizeCanvas = () => {
+        const rect = groupWheel.getBoundingClientRect();
+        const ratio = window.devicePixelRatio || 1;
+        groupWheel.width = Math.max(1, Math.floor(rect.width * ratio));
+        groupWheel.height = Math.max(1, Math.floor(rect.height * ratio));
+        ctx.setTransform(ratio,0,0,ratio,0,0);
+        drawWheel();
+      };
+      const drawWheel = () => {
+        const size = groupWheel.getBoundingClientRect().width || 520;
+        const cx = size/2, cy = size/2, radius = size*.44;
+        ctx.clearRect(0,0,size,size);
+        ctx.save();
+        ctx.translate(cx,cy);
+        ctx.rotate(rotation);
+        const items = availableStudents.length ? availableStudents : groupStudents;
+        const slice = TAU/items.length;
+        items.forEach((name,i)=>{
+          const start = -Math.PI/2 + i*slice;
+          const end = start + slice;
+          ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,radius,start,end); ctx.closePath();
+          ctx.fillStyle = wheelColors[i % wheelColors.length]; ctx.globalAlpha=.88; ctx.fill();
+          ctx.globalAlpha=1; ctx.strokeStyle='rgba(5,8,6,.55)'; ctx.lineWidth=1.5; ctx.stroke();
+          if(items.length <= 18){
+            ctx.save(); ctx.rotate(start + slice/2); ctx.translate(radius*.67,0); ctx.rotate(Math.PI/2);
+            ctx.fillStyle='#071008'; ctx.font='700 10px Arial'; ctx.textAlign='center';
+            ctx.fillText(shortName(name),0,0); ctx.restore();
+          }
+        });
+        ctx.restore();
+        ctx.beginPath();ctx.arc(cx,cy,radius+1,0,TAU);ctx.strokeStyle='rgba(255,255,255,.16)';ctx.lineWidth=3;ctx.stroke();
+      };
+      const syncGroups = () => {
+        const count = Math.max(2, Number(groupCountSelect.value)||4);
+        assignedGroups = Array.from({length:count},()=>[]);
+        pickedStudents.forEach((name,i)=>assignedGroups[i%count].push(name));
+        groupList.innerHTML = assignedGroups.map((members,i)=>`<div class="group-card"><div class="group-card__head"><strong>Kelompok ${i+1}</strong><span>${members.length} anggota</span></div><div class="group-members">${members.length ? members.map(n=>`<span class="group-member">${n}</span>`).join('') : '<span class="group-member">Belum ada anggota</span>'}</div></div>`).join('');
+        spinRemaining.textContent=availableStudents.length; spinPicked.textContent=pickedStudents.length; spinTotal.textContent=groupStudents.length;
+      };
+      const resetSpin = () => {
+        if(spinning) return;
+        availableStudents=[...groupStudents]; pickedStudents=[]; assignedGroups=[]; rotation=0;
+        spinResult.textContent='Siap diputar'; spinStatus.textContent='READY'; spinStatus.classList.remove('is-spinning');
+        spinButton.classList.remove('is-spinning'); spinButton.disabled=false; spinButton.innerHTML='<svg class="pro-icon" aria-hidden="true"><use href="#icon-shuffle"></use></svg> Putar Roda';
+        syncGroups(); drawWheel();
+      };
+      const animateSpin = (targetRotation, duration, onDone) => {
+        const start=rotation, change=targetRotation-start, started=performance.now();
+        const ease=t=>1-Math.pow(1-t,4);
+        const frame=now=>{const t=Math.min(1,(now-started)/duration);rotation=start+change*ease(t);drawWheel();if(t<1){animationFrame=requestAnimationFrame(frame)}else{rotation=targetRotation;drawWheel();onDone?.()}};
+        animationFrame=requestAnimationFrame(frame);
+      };
+      const spin = () => {
+        if(spinning || !availableStudents.length) return;
+        spinning=true; spinButton.disabled=true; spinButton.classList.add('is-spinning'); spinStatus.textContent='SPINNING'; spinStatus.classList.add('is-spinning'); spinResult.textContent='Memilih anggota…';
+        const chosenIndex=Math.floor(Math.random()*availableStudents.length);
+        const count=availableStudents.length;
+        const slice=TAU/count;
+        // Canvas slice centers start at -PI/2. Pointer is fixed at -PI/2.
+        const targetMod = -(chosenIndex*slice + slice/2);
+        const currentMod = rotation % TAU;
+        let delta = targetMod - currentMod;
+        while(delta<0) delta+=TAU;
+        const turns = 6 + Math.floor(Math.random()*3);
+        const target=rotation + turns*TAU + delta;
+        animateSpin(target, 3400 + Math.random()*700, ()=>{
+          const chosen=availableStudents.splice(chosenIndex,1)[0];
+          pickedStudents.push(chosen); syncGroups();
+          spinResult.textContent=chosen; spinStatus.textContent='SELECTED'; spinStatus.classList.remove('is-spinning');
+          spinning=false; spinButton.disabled=false; spinButton.classList.remove('is-spinning');
+          spinButton.innerHTML='<svg class="pro-icon" aria-hidden="true"><use href="#icon-shuffle"></use></svg> Putar Lagi';
+          drawWheel();
+        });
+      };
+      spinButton.addEventListener('click',spin);
+      spinReset.addEventListener('click',resetSpin);
+      groupCountSelect.addEventListener('change',()=>{if(!spinning)syncGroups()});
+      window.addEventListener('resize',resizeCanvas);
+      resetSpin(); resizeCanvas();
+    }
+
     // ------------------------------------------------------------
     // Spotify OAuth login modal (Authorization Code + PKCE)
     // ------------------------------------------------------------
@@ -582,62 +701,4 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(window.__toastTimer);
         window.__toastTimer = setTimeout(() => element.classList.remove('active'), 3000);
     }
-});
-
-/* =========================================
-   MUSIC PLAYER OPEN / CLOSE
-========================================= */
-
-const musicButton = document.getElementById("musicButton");
-const musicPlayer = document.getElementById("musicPlayer");
-
-if (musicButton && musicPlayer) {
-
-    musicButton.addEventListener("click", () => {
-
-        const isOpen = musicPlayer.classList.toggle("is-open");
-
-        musicButton.classList.toggle("is-active", isOpen);
-
-        musicButton.setAttribute(
-            "aria-label",
-            isOpen ? "Tutup pemutar musik" : "Buka pemutar musik"
-        );
-
-    });
-
-}
-
-/* =========================================
-   SPIN LOADER - XI IPS 1
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const loadingScreen = document.getElementById("loadingScreen");
-
-    if (!loadingScreen) {
-        console.warn("Loading screen tidak ditemukan.");
-        return;
-    }
-
-    // Pastikan loading tampil
-    loadingScreen.classList.remove("loading-hidden");
-
-    // Hilangkan loading setelah website siap
-    window.addEventListener("load", () => {
-
-        setTimeout(() => {
-
-            loadingScreen.classList.add("loading-hidden");
-
-            // Hapus dari tampilan setelah animasi selesai
-            setTimeout(() => {
-                loadingScreen.style.display = "none";
-            }, 650);
-
-        }, 900);
-
-    });
-
 });
