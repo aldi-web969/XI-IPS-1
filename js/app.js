@@ -683,3 +683,16 @@ document.addEventListener('DOMContentLoaded', () => {
         window.__toastTimer = setTimeout(() => element.classList.remove('active'), 3000);
     }
 });
+
+
+// Initial website loading screen only. This is separate from Spin Kelompok.
+(function(){
+  const loader=document.getElementById('loadingScreen');
+  if(!loader) return;
+  const hide=()=>{
+    loader.classList.add('is-hidden');
+    window.setTimeout(()=>loader.remove(),500);
+  };
+  if(document.readyState==='complete') window.setTimeout(hide,1400);
+  else window.addEventListener('load',()=>window.setTimeout(hide,1400),{once:true});
+})();
