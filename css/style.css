@@ -44,6 +44,48 @@
 .gallery-art--purple .pro-icon{color:var(--purple)}
 .schedule-note>span .pro-icon{color:var(--green);filter:drop-shadow(0 0 7px var(--green))}
 
+/* =========================================
+   MUSIC PLAYER OPEN / CLOSE
+========================================= */
+
+.music-player {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(25px) scale(.96);
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease,
+        transform .3s ease;
+}
+
+.music-player.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Tombol musik saat player terbuka */
+#musicButton.is-active {
+    background: rgba(120, 255, 80, .15);
+    border-color: rgba(120, 255, 80, .5);
+    color: #8cff6a;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .music-player {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+    }
+}
+
 /* ===== SPOTIFY-STYLE MUSIC PLAYER ===== */
 .music-player {
     position: fixed;
