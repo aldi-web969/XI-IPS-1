@@ -584,3 +584,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+/* =========================================
+   MUSIC PLAYER OPEN / CLOSE
+========================================= */
+
+const musicButton = document.getElementById("musicButton");
+const musicPlayer = document.getElementById("musicPlayer");
+
+if (musicButton && musicPlayer) {
+
+    musicButton.addEventListener("click", () => {
+
+        const isOpen = musicPlayer.classList.toggle("is-open");
+
+        musicButton.classList.toggle("is-active", isOpen);
+
+        musicButton.setAttribute(
+            "aria-label",
+            isOpen ? "Tutup pemutar musik" : "Buka pemutar musik"
+        );
+
+    });
+
+}
