@@ -1,462 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spin Kelompok | XI IPS 1</title>
 
-<style>
-:root {
-    --bg: #050609;
-    --panel: rgba(255,255,255,.06);
-    --green: #8cff98;
-    --green2: #c5ffca;
-    --text: #f7f9f8;
-    --muted: #98a19b;
-}
+    <meta charset="UTF-8">
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: var(--text);
-    background:
-        radial-gradient(circle at 50% 30%, rgba(140,255,152,.12), transparent 30%),
-        #050609;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-}
+    <title>Spin Kelompok - XI IPS 1</title>
 
-.container {
-    width: min(1100px, 100%);
-    text-align: center;
-}
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
-h1 {
-    font-size: 38px;
-    margin-bottom: 8px;
-}
-
-.subtitle {
-    color: var(--muted);
-    margin-bottom: 30px;
-}
-
-.spin-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-/* =========================
-   RODA SPIN
-========================= */
-
-.wheel-wrapper {
-    position: relative;
-    width: min(650px, 90vw);
-    aspect-ratio: 1;
-}
-
-#wheel {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        conic-gradient(
-            #102c18 0deg 13.33deg,
-            #183d21 13.33deg 26.66deg,
-            #102c18 26.66deg 39.99deg,
-            #183d21 39.99deg 53.32deg,
-            #102c18 53.32deg 66.65deg,
-            #183d21 66.65deg 79.98deg,
-            #102c18 79.98deg 93.31deg,
-            #183d21 93.31deg 106.64deg,
-            #102c18 106.64deg 119.97deg,
-            #183d21 119.97deg 133.3deg,
-            #102c18 133.3deg 146.63deg,
-            #183d21 146.63deg 159.96deg,
-            #102c18 159.96deg 173.29deg,
-            #183d21 173.29deg 186.62deg,
-            #102c18 186.62deg 199.95deg,
-            #183d21 199.95deg 213.28deg,
-            #102c18 213.28deg 226.61deg,
-            #183d21 226.61deg 239.94deg,
-            #102c18 239.94deg 253.27deg,
-            #183d21 253.27deg 266.6deg,
-            #102c18 266.6deg 279.93deg,
-            #183d21 279.93deg 293.26deg,
-            #102c18 293.26deg 306.59deg,
-            #183d21 306.59deg 319.92deg,
-            #102c18 319.92deg 333.25deg,
-            #183d21 333.25deg 346.58deg,
-            #102c18 346.58deg 360deg
-        );
-
-    border: 8px solid rgba(140,255,152,.25);
-    box-shadow:
-        0 0 40px rgba(140,255,152,.15),
-        inset 0 0 50px rgba(0,0,0,.7);
-
-    transition: transform 4s cubic-bezier(.12,.8,.12,1);
-}
-
-/* GARIS PEMISAH */
-#wheel::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    box-shadow:
-        inset 0 0 0 2px rgba(255,255,255,.15),
-        inset 0 0 35px rgba(0,0,0,.7);
-}
-
-/* NAMA SISWA */
-.name {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-
-    width: 105px;
-    height: 25px;
-
-    margin-left: -52px;
-    margin-top: -12px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: #fff;
-    font-size: 8px;
-    font-weight: 700;
-    text-align: center;
-
-    transform:
-        rotate(var(--angle))
-        translateY(-250px)
-        rotate(calc(var(--angle) * -1));
-
-    transform-origin: center;
-
-    text-shadow: 0 1px 4px #000;
-    pointer-events: none;
-}
-
-/* TENGAH */
-.center-spin {
-    position: absolute;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    z-index: 5;
-
-    border: 5px solid #8cff98;
-
-    background:
-        radial-gradient(circle, #102615, #071009);
-
-    color: #8cff98;
-    font-size: 17px;
-    font-weight: 900;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 0 30px rgba(140,255,152,.4),
-        inset 0 0 25px rgba(140,255,152,.1);
-}
-
-/* POINTER */
-.pointer {
-    position: absolute;
-    top: -17px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-
-    width: 0;
-    height: 0;
-
-    border-left: 18px solid transparent;
-    border-right: 18px solid transparent;
-    border-top: 45px solid #8cff98;
-
-    filter:
-        drop-shadow(0 0 10px rgba(140,255,152,.8));
-}
-
-/* BUTTON */
-.controls {
-    margin-top: 35px;
-}
-
-button {
-    border: none;
-    border-radius: 14px;
-
-    padding: 15px 30px;
-
-    background: #8cff98;
-    color: #061008;
-
-    font-weight: 900;
-    font-size: 14px;
-
-    cursor: pointer;
-
-    box-shadow: 0 0 25px rgba(140,255,152,.2);
-
-    transition: .25s;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(140,255,152,.4);
-}
-
-button:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-}
-
-/* HASIL */
-.result {
-    margin: 30px auto 0;
-    max-width: 600px;
-
-    padding: 20px;
-
-    border: 1px solid rgba(140,255,152,.2);
-    border-radius: 20px;
-
-    background: var(--panel);
-    backdrop-filter: blur(20px);
-
-    opacity: 0;
-    transform: translateY(15px);
-    transition: .5s;
-}
-
-.result.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.result small {
-    color: var(--muted);
-}
-
-.result h2 {
-    color: var(--green);
-    margin-top: 7px;
-}
-
-/* RESPONSIVE */
-@media(max-width:700px) {
-
-    body {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    .wheel-wrapper {
-        width: 94vw;
-    }
-
-    .name {
-        width: 80px;
-        margin-left: -40px;
-        font-size: 6px;
-        transform:
-            rotate(var(--angle))
-            translateY(-36vw)
-            rotate(calc(var(--angle) * -1));
-    }
-
-    .center-spin {
-        width: 80px;
-        height: 80px;
-        font-size: 12px;
-    }
-}
-</style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid"></div>
+    </div>
 
-    <h1>Spin Kelompok</h1>
-    <p class="subtitle">
-        Putar roda untuk menentukan siswa secara acak
-    </p>
+    <header class="navbar">
 
-    <div class="spin-area">
+        <div class="logo">
 
-        <div class="wheel-wrapper">
+            <div class="logo-icon">
+                XI
+            </div>
 
-            <div class="pointer"></div>
-
-            <div id="wheel">
-
-                <!-- NAMA SISWA AKAN DIBUAT OTOMATIS -->
-
-                <div class="center-spin">
-                    SPIN
-                </div>
-
+            <div>
+                <strong>XI IPS 1</strong>
+                <small>Spin Kelompok</small>
             </div>
 
         </div>
 
-    </div>
+        <nav>
+            <a href="index.html">← Kembali</a>
+        </nav>
 
-    <div class="controls">
-        <button id="spinButton" onclick="spinWheel()">
-            PUTAR RODA
-        </button>
-    </div>
+    </header>
 
-    <div class="result" id="result">
-        <small>Siswa terpilih</small>
-        <h2 id="winner">—</h2>
-    </div>
 
-</div>
+    <main>
 
-<script>
+        <section class="hero">
 
-/* =========================
-   DATA SISWA XI IPS 1
-========================= */
+            <div class="hero-content">
 
-const students = [
-    "AL SILA RAMADHANI",
-    "ALDIANSYAH PUTRA KUSUMA",
-    "ANDIN AULIA AGUSTIN",
-    "ANDINI AULIA WIJAYA",
-    "ANJU MAULANA LUMBAN GAUL",
-    "AZKA FINA",
-    "DAVID JONATHAN KETAREN",
-    "FILZAH AMARTA PUTRI HIDAYAT",
-    "HALIMATUL JULHIJAH",
-    "JEREMI THOMAS WARASI",
-    "LOIS ZADOL ZAI",
-    "MELATI KIRANA PUTRI",
-    "MOCH. FAJAR NURJAYADI",
-    "MOCHAMAD RIZKI ADITYA PERMANA",
-    "MUHAMAD ADILLAH KHOIR",
-    "MUHAMAD HAIRIL NUR ZAMAN",
-    "MUHAMAD REVAN AULIA MAKMUR",
-    "MUHAMMAD AZRIEL DANIYAL",
-    "NAZWA OKTAPIYANI",
-    "REJEKI KURNIAWAN WARUWU",
-    "RENO FEDRIAN",
-    "RYAD ZABAL ARASY",
-    "SITI ALAYYA ZULAIKHA",
-    "SITI DARA NURHAFNI",
-    "SITI PAUJIAH",
-    "SYARIFFA NURIL AINI",
-    "YADI ROSDIANSYAH"
-];
+                <span class="badge">
+                    ● RANDOM GROUP
+                </span>
 
-const wheel = document.getElementById("wheel");
-const button = document.getElementById("spinButton");
-const result = document.getElementById("result");
-const winner = document.getElementById("winner");
+                <h1>
+                    Spin
+                    <span>Kelompok</span>
+                </h1>
 
-let rotation = 0;
-let spinning = false;
+                <p>
+                    Gunakan tombol spin untuk memilih
+                    siswa secara acak.
+                </p>
 
-/* =========================
-   MEMBUAT NAMA DI RODA
-========================= */
+                <button
+                    id="spinButton"
+                    class="btn primary"
+                >
+                    SPIN SEKARANG
+                </button>
 
-students.forEach((student, index) => {
+            </div>
 
-    const name = document.createElement("div");
 
-    name.className = "name";
+            <div class="hero-card">
 
-    const angle = index * (360 / students.length);
+                <div class="card-top">
+                    <span>HASIL SPIN</span>
+                </div>
 
-    name.style.setProperty("--angle", `${angle}deg`);
+                <div
+                    id="result"
+                    class="hero-number"
+                    style="font-size:42px;"
+                >
+                    ?
+                </div>
 
-    name.textContent = student;
+                <p id="resultInfo">
+                    Belum ada hasil.
+                </p>
 
-    wheel.appendChild(name);
-});
+            </div>
 
-/* =========================
-   SPIN
-========================= */
+        </section>
 
-function spinWheel() {
+    </main>
 
-    if (spinning) return;
 
-    spinning = true;
-    button.disabled = true;
-    button.textContent = "MEMUTAR...";
-
-    result.classList.remove("show");
-
-    const selected =
-        Math.floor(Math.random() * students.length);
-
-    const segment =
-        360 / students.length;
-
-    const target =
-        360 - (selected * segment + segment / 2);
-
-    const extra =
-        360 * (5 + Math.floor(Math.random() * 3));
-
-    rotation += extra + target;
-
-    wheel.style.transform =
-        `rotate(${rotation}deg)`;
-
-    setTimeout(() => {
-
-        winner.textContent =
-            students[selected];
-
-        result.classList.add("show");
-
-        button.disabled = false;
-        button.textContent = "PUTAR LAGI";
-
-        spinning = false;
-
-    }, 4000);
-}
-
-</script>
+    <script src="js/group.js"></script>
 
 </body>
+
 </html>
