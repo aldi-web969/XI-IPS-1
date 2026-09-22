@@ -3,480 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Website kelas XI IPS 1">
-    <title>XI IPS 1 — Class Portal</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>XI IPS 1</title>
+
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="page-loader">
-    <div class="loader-content">
-        <div class="loader-logo">XI</div>
-        <div class="loader-title">XI IPS 1</div>
-        <div class="loader-subtitle">CLASS PORTAL</div>
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid"></div>
+    </div>
 
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
-
-        <div class="loader-status" id="loaderStatus">
-            Memuat website...
+    <!-- LOADING -->
+    <div id="loader">
+        <div class="loader-box">
+            <div class="loader-logo">XI</div>
+            <h2>XI IPS 1</h2>
+            <div class="loader-line">
+                <span></span>
+            </div>
+            <p>Memuat Class Portal...</p>
         </div>
     </div>
-</div>
 
+    <!-- NAVBAR -->
+    <header class="navbar">
 
-<!-- HEADER -->
-<header class="header">
-
-    <div class="nav">
-
-        <a href="#beranda" class="brand">
-            <div class="brand-logo">XI</div>
-
+        <div class="logo">
+            <div class="logo-icon">XI</div>
             <div>
                 <strong>XI IPS 1</strong>
                 <small>Class Portal</small>
             </div>
-        </a>
+        </div>
 
-
-        <nav id="navMenu">
-            <a href="#beranda">Beranda</a>
-            <a href="#tentang">Tentang</a>
-            <a href="#siswa">Siswa</a>
-            <a href="#jadwal">Jadwal</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#students">Siswa</a>
+            <a href="#schedule">Jadwal</a>
             <a href="#moments">Class Moments</a>
+            <a href="#spotify">Music</a>
             <a href="group.html">Spin Kelompok</a>
         </nav>
 
+    </header>
 
-        <button id="menuButton" class="menu-button">
-            ☰
-        </button>
+    <!-- HERO -->
+    <main>
 
-    </div>
+        <section id="home" class="hero">
 
-</header>
+            <div class="hero-content">
 
+                <span class="badge">● CLASS PORTAL</span>
 
-<!-- HERO -->
-<main>
+                <h1>
+                    Welcome to
+                    <span>XI IPS 1</span>
+                </h1>
 
-<section class="hero" id="beranda">
+                <p>
+                    Portal digital kelas untuk informasi siswa,
+                    jadwal pelajaran, dokumentasi kelas, musik,
+                    dan berbagai fitur interaktif.
+                </p>
 
-    <div class="hero-content">
+                <div class="hero-buttons">
+                    <a href="#students" class="btn primary">
+                        Lihat Siswa
+                    </a>
 
-        <div class="badge">
-            WEBSITE RESMI XI IPS 1
-        </div>
+                    <a href="group.html" class="btn secondary">
+                        Spin Kelompok
+                    </a>
+                </div>
 
-        <p class="eyebrow">
-            SCHOOL • COMMUNITY • CREATIVE
-        </p>
-
-        <h1>
-            Class life,
-            <span>beautifully organized.</span>
-        </h1>
-
-        <p class="hero-text">
-            Selamat datang di website kelas XI IPS 1.
-            Temukan informasi kelas, siswa, jadwal,
-            dan dokumentasi kegiatan dalam satu tempat.
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a href="#tentang" class="btn primary">
-                Jelajahi Kelas →
-            </a>
-
-            <a href="#siswa" class="btn secondary">
-                Lihat Siswa
-            </a>
-
-        </div>
-
-
-        <div class="hero-stats">
-
-            <div>
-                <strong>27</strong>
-                <span>Siswa</span>
             </div>
 
-            <div>
-                <strong>12+</strong>
-                <span>Mapel</span>
+            <div class="hero-card">
+
+                <div class="card-top">
+                    <span>XI IPS 1</span>
+                    <span class="status">● ONLINE</span>
+                </div>
+
+                <div class="hero-number">27</div>
+
+                <p>Jumlah Siswa</p>
+
+                <div class="mini-info">
+                    <div>
+                        <strong>2026</strong>
+                        <small>Tahun Ajaran</small>
+                    </div>
+
+                    <div>
+                        <strong>XI</strong>
+                        <small>Kelas</small>
+                    </div>
+                </div>
+
             </div>
 
-            <div>
-                <strong>2026</strong>
-                <span>Tahun</span>
-            </div>
+        </section>
 
-        </div>
-
-    </div>
-
-
-    <div class="dashboard glass">
-
-        <div class="dashboard-top">
-            <span>CLASS DASHBOARD</span>
-            <span class="live">● LIVE</span>
-        </div>
-
-        <h2>
-            Ready to
-            <span>learn.</span>
-        </h2>
-
-        <p>
-            Semua informasi kelas berada
-            dalam satu portal.
-        </p>
-
-
-        <div class="dashboard-info">
+        <!-- NEXT CLASS -->
+        <section class="next-class">
 
             <div>
-                <span>Kelas</span>
-                <strong>XI IPS 1</strong>
+                <span class="section-label">NEXT CLASS</span>
+                <h2 id="nextClass">Memuat...</h2>
+                <p id="nextTime">--:--</p>
             </div>
 
-            <div>
-                <span>Siswa</span>
-                <strong>27</strong>
+            <div class="clock">
+                <span id="currentTime">00:00:00</span>
             </div>
 
-            <div>
-                <span>Status</span>
-                <strong>Aktif</strong>
+        </section>
+
+        <!-- STUDENTS -->
+        <section id="students" class="section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">CLASS MEMBERS</span>
+                    <h2>Daftar Siswa</h2>
+                </div>
+
+                <span class="count">27 Siswa</span>
             </div>
 
-        </div>
+            <div class="student-grid" id="studentList"></div>
 
-    </div>
+        </section>
 
-</section>
+        <!-- SCHEDULE -->
+        <section id="schedule" class="section">
 
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">CLASS SCHEDULE</span>
+                    <h2>Jadwal Pelajaran</h2>
+                </div>
+            </div>
 
-<!-- TENTANG -->
-<section id="tentang" class="section">
+            <div class="day-buttons">
 
-    <div class="section-title">
-        <p class="eyebrow">01 — TENTANG KELAS</p>
+                <button class="day-btn active" data-day="Senin">
+                    Senin
+                </button>
 
-        <h2>
-            Satu kelas.
-            <span>Satu cerita.</span>
-        </h2>
+                <button class="day-btn" data-day="Selasa">
+                    Selasa
+                </button>
 
-        <p>
-            Portal digital XI IPS 1 untuk menyimpan
-            informasi dan kegiatan kelas.
-        </p>
-    </div>
+                <button class="day-btn" data-day="Rabu">
+                    Rabu
+                </button>
 
+                <button class="day-btn" data-day="Kamis">
+                    Kamis
+                </button>
 
-    <div class="cards">
+                <button class="day-btn" data-day="Jumat">
+                    Jumat
+                </button>
 
-        <article class="card glass">
-            <div class="icon">◎</div>
-            <h3>Terorganisir</h3>
-            <p>
-                Informasi kelas tersusun rapi
-                dan mudah ditemukan.
-            </p>
-        </article>
+            </div>
 
+            <div id="scheduleList" class="schedule-list"></div>
 
-        <article class="card glass">
-            <div class="icon">✦</div>
-            <h3>Modern</h3>
-            <p>
-                Tampilan menggunakan konsep
-                dark glass dan neon.
-            </p>
-        </article>
+        </section>
 
+        <!-- CLASS MOMENTS -->
+        <section id="moments" class="section">
 
-        <article class="card glass">
-            <div class="icon">↗</div>
-            <h3>Responsive</h3>
-            <p>
-                Bisa digunakan pada PC,
-                laptop maupun smartphone.
-            </p>
-        </article>
+            <div class="section-heading">
 
-    </div>
+                <div>
+                    <span class="section-label">MEMORIES</span>
+                    <h2>Class Moments</h2>
+                    <p>Simpan dokumentasi kegiatan kelas.</p>
+                </div>
 
-</section>
+                <label class="upload-btn">
+                    + Tambah Foto
+                    <input
+                        type="file"
+                        id="photoInput"
+                        accept="image/*"
+                        multiple
+                        hidden
+                    >
+                </label>
 
+            </div>
 
-<!-- SISWA -->
-<section id="siswa" class="section">
+            <div id="gallery" class="gallery"></div>
 
-    <div class="section-title">
-        <p class="eyebrow">02 — SISWA</p>
+        </section>
 
-        <h2>
-            Meet the
-            <span>class.</span>
-        </h2>
+        <!-- SPOTIFY -->
+        <section id="spotify" class="section">
 
-        <p>
-            Daftar siswa XI IPS 1.
-        </p>
-    </div>
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">MUSIC</span>
+                    <h2>Class Music</h2>
+                    <p>Temukan musik favorit untuk menemani belajar.</p>
+                </div>
+            </div>
 
+            <div class="music-box">
 
-    <div class="student-tools">
+                <div class="music-icon">
+                    ♪
+                </div>
 
-        <input
-            type="text"
-            id="studentSearch"
-            placeholder="Cari nama siswa..."
-        >
+                <div>
+                    <h3>Spotify Music</h3>
+                    <p>
+                        Hubungkan Spotify API untuk menggunakan
+                        pencarian musik.
+                    </p>
+                </div>
 
-    </div>
+                <button class="btn primary" id="spotifyButton">
+                    Open Spotify
+                </button>
 
+            </div>
 
-    <div class="students" id="studentList">
+        </section>
 
-        <div class="student glass">AL SILA RAMADHANI <small>P</small></div>
-        <div class="student glass">ALDIANSYAH PUTRA KUSUMA <small>L</small></div>
-        <div class="student glass">Andin Aulia Agustin <small>P</small></div>
-        <div class="student glass">ANDINI AULIA WIJAYA <small>P</small></div>
-        <div class="student glass">ANJU MAULANA LUMBAN GAUL <small>L</small></div>
-        <div class="student glass">Azka Fina <small>P</small></div>
-        <div class="student glass">David Jonathan Ketaren <small>L</small></div>
-        <div class="student glass">FILZAH AMARTA PUTRI HIDAYAT <small>P</small></div>
-        <div class="student glass">HALIMATUL JULHIJAH <small>P</small></div>
-        <div class="student glass">JEREMI THOMAS WARASI <small>L</small></div>
-        <div class="student glass">Lois Zadol Zai <small>L</small></div>
-        <div class="student glass">Melati Kirana Putri <small>P</small></div>
-        <div class="student glass">MOCH. FAJAR NURJAYADI <small>L</small></div>
-        <div class="student glass">MOCHAMAD RIZKI ADITYA PERMANA <small>L</small></div>
-        <div class="student glass">MUHAMAD ADILLAH KHOIR <small>L</small></div>
-        <div class="student glass">Muhamad Hairil Nur Zaman <small>L</small></div>
-        <div class="student glass">MUHAMAD REVAN AULIA MAKMUR <small>L</small></div>
-        <div class="student glass">Muhammad Azriel Daniyal <small>L</small></div>
-        <div class="student glass">NAZWA OKTAPIYANI <small>P</small></div>
-        <div class="student glass">REJEKI KURNIAWAN WARUWU <small>L</small></div>
-        <div class="student glass">RENO FEDRIAN <small>L</small></div>
-        <div class="student glass">RYAD ZABAL ARASY <small>L</small></div>
-        <div class="student glass">Siti Alayya Zulaikha <small>P</small></div>
-        <div class="student glass">SITI DARA NURHAFNI <small>P</small></div>
-        <div class="student glass">SITI PAUJIAH <small>P</small></div>
-        <div class="student glass">SYARIFFA NURIL AINI <small>P</small></div>
-        <div class="student glass">YADI ROSDIANSYAH <small>L</small></div>
+    </main>
 
-    </div>
-
-</section>
-
-
-<!-- JADWAL -->
-<section id="jadwal" class="section">
-
-    <div class="section-title">
-
-        <p class="eyebrow">03 — JADWAL</p>
-
-        <h2>
-            Weekly
-            <span>schedule.</span>
-        </h2>
-
-    </div>
-
-
-    <div class="next-class glass">
+    <!-- FOOTER -->
+    <footer>
 
         <div>
-            <small>NEXT CLASS</small>
-            <h3 id="nextSubject">Memuat...</h3>
+            <strong>XI IPS 1</strong>
+            <p>Class Portal</p>
         </div>
-
-        <strong id="nextTime">--:--</strong>
-
-    </div>
-
-
-    <div class="schedule glass">
-
-        <div class="schedule-head">
-            <strong>Hari</strong>
-            <strong>Pelajaran</strong>
-            <strong>Waktu</strong>
-        </div>
-
-
-        <div class="schedule-row">
-            <strong>Senin</strong>
-            <span>PJOK</span>
-            <span>07.40 – 09.00</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Senin</strong>
-            <span>PKN</span>
-            <span>09.00 – 10.20</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Senin</strong>
-            <span>Informatika</span>
-            <span>10.50 – 12.10</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Selasa</strong>
-            <span>Sosiologi</span>
-            <span>07.40 – 09.00</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Selasa</strong>
-            <span>B. Jepang</span>
-            <span>09.00 – 10.20</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Selasa</strong>
-            <span>Seni Budaya</span>
-            <span>10.50 – 12.10</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Rabu</strong>
-            <span>Sosiologi</span>
-            <span>07.40 – 09.00</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Rabu</strong>
-            <span>Matematika</span>
-            <span>09.00 – 09.40</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Rabu</strong>
-            <span>B. Indonesia</span>
-            <span>09.40 – 10.20</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Kamis</strong>
-            <span>B. Inggris</span>
-            <span>07.40 – 09.00</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Kamis</strong>
-            <span>B. Sunda</span>
-            <span>09.00 – 10.20</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Kamis</strong>
-            <span>Matematika</span>
-            <span>10.50 – 12.10</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Jumat</strong>
-            <span>Ekonomi</span>
-            <span>07.40 – 09.00</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Jumat</strong>
-            <span>Geografi</span>
-            <span>09.00 – 09.40</span>
-        </div>
-
-        <div class="schedule-row">
-            <strong>Jumat</strong>
-            <span>Klinik Belajar</span>
-            <span>10.40 – 11.20</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CLASS MOMENTS -->
-<section id="moments" class="section">
-
-    <div class="moments-heading">
 
         <div>
-
-            <p class="eyebrow">
-                04 — CLASS MOMENTS
-            </p>
-
-            <h2>
-                Our
-                <span>memories.</span>
-            </h2>
-
+            Dibuat oleh <strong>Aldiansyah</strong>
         </div>
 
+    </footer>
 
-        <label class="add-photo">
+    <!-- JAVASCRIPT -->
 
-            + Tambah Foto
-
-            <input
-                type="file"
-                id="photoInput"
-                accept="image/*"
-                multiple
-            >
-
-        </label>
-
-    </div>
-
-
-    <div
-        class="gallery"
-        id="gallery"
-    ></div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-    <div class="footer-logo">
-        XI IPS 1
-    </div>
-
-    <p>
-        Class Portal © 2026
-    </p>
-
-    <p>
-        Created by <strong>Aldiansyah</strong>
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="js/spotify-config.js"></script>
+    <script src="js/spotify.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>
