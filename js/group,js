@@ -1,453 +1,87 @@
-/* =========================================
-   XI IPS 1
-   GROUP SPIN SYSTEM
-========================================= */
-
-
-/* =========================================
-   DAFTAR SISWA
-   GANTI NAMA DI BAGIAN INI
-========================================= */
-
 const students = [
-    "Aldiansyah",
-    "Siswa 02",
-    "Siswa 03",
-    "Siswa 04",
-    "Siswa 05",
-    "Siswa 06",
-    "Siswa 07",
-    "Siswa 08",
-    "Siswa 09",
-    "Siswa 10",
-    "Siswa 11",
-    "Siswa 12",
-    "Siswa 13",
-    "Siswa 14",
-    "Siswa 15",
-    "Siswa 16",
-    "Siswa 17",
-    "Siswa 18",
-    "Siswa 19",
-    "Siswa 20",
-    "Siswa 21",
-    "Siswa 22",
-    "Siswa 23",
-    "Siswa 24",
-    "Siswa 25",
-    "Siswa 26",
-    "Siswa 27"
+    "AL SILA RAMADHANI",
+    "ALDIANSYAH PUTRA KUSUMA",
+    "Andin Aulia Agustin",
+    "ANDINI AULIA WIJAYA",
+    "ANJU MAULANA LUMBAN GAUL",
+    "Azka Fina",
+    "David Jonathan Ketaren",
+    "FILZAH AMARTA PUTRI HIDAYAT",
+    "HALIMATUL JULHIJAH",
+    "JEREMI THOMAS WARASI",
+    "Lois Zadol Zai",
+    "Melati Kirana Putri",
+    "MOCH. FAJAR NURJAYADI",
+    "MOCHAMAD RIZKI ADITYA PERMANA",
+    "MUHAMAD ADILLAH KHOIR",
+    "Muhamad Hairil Nur Zaman",
+    "MUHAMAD REVAN AULIA MAKMUR",
+    "Muhammad Azriel Daniyal",
+    "NAZWA OKTAPIYANI",
+    "REJEKI KURNIAWAN WARUWU",
+    "RENO FEDRIAN",
+    "RYAD ZABAL ARASY",
+    "Siti Alayya Zulaikha",
+    "SITI DARA NURHAFNI",
+    "SITI PAUJIAH",
+    "SYARIFFA NURIL AINI",
+    "YADI ROSDIANSYAH"
 ];
 
 
-/* =========================================
-   ELEMENT
-========================================= */
+const spinButton =
+    document.getElementById("spinButton");
 
-const wheel =
-    document.getElementById("wheel");
+const result =
+    document.getElementById("result");
 
-const spinBtn =
-    document.getElementById("spinBtn");
+const resultInfo =
+    document.getElementById("resultInfo");
 
-const resetBtn =
-    document.getElementById("resetBtn");
 
-const shuffleBtn =
-    document.getElementById("shuffleBtn");
+spinButton.addEventListener("click", () => {
 
-const groupCount =
-    document.getElementById("groupCount");
+    spinButton.disabled = true;
 
-const currentName =
-    document.getElementById("currentName");
+    let count = 0;
 
-const statusText =
-    document.getElementById("status");
+    const animation =
+        setInterval(() => {
 
-const groupsContainer =
-    document.getElementById("groups");
+            const random =
+                students[
+                    Math.floor(
+                        Math.random() *
+                        students.length
+                    )
+                ];
 
+            result.textContent = random;
 
-/* =========================================
-   STATE
-========================================= */
+            count++;
 
-let rotation = 0;
+            if (count >= 25) {
 
-let spinning = false;
+                clearInterval(animation);
 
-let groups = [];
+                const winner =
+                    students[
+                        Math.floor(
+                            Math.random() *
+                            students.length
+                        )
+                    ];
 
+                result.textContent =
+                    winner;
 
-/* =========================================
-   RANDOM
-========================================= */
+                resultInfo.textContent =
+                    "Siswa terpilih secara acak.";
 
-function randomNumber(max) {
+                spinButton.disabled = false;
 
-    return Math.floor(
-        Math.random() * max
-    );
+            }
 
-}
+        }, 80);
 
-
-/* =========================================
-   SHUFFLE
-========================================= */
-
-function shuffle(array) {
-
-    const result = [...array];
-
-    for (
-        let i = result.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
-
-        [
-            result[i],
-            result[j]
-        ] = [
-            result[j],
-            result[i]
-        ];
-
-    }
-
-    return result;
-}
-
-
-/* =========================================
-   CREATE GROUPS
-========================================= */
-
-function createGroups() {
-
-    const totalGroups =
-        Number(groupCount.value);
-
-    const shuffledStudents =
-        shuffle(students);
-
-    groups =
-        Array.from(
-            {
-                length: totalGroups
-            },
-            () => []
-        );
-
-
-    /*
-        Pembagian dibuat merata.
-        Contoh:
-        27 siswa / 4 kelompok
-
-        Kelompok 1 = 7
-        Kelompok 2 = 7
-        Kelompok 3 = 7
-        Kelompok 4 = 6
-    */
-
-    shuffledStudents.forEach(
-        (student, index) => {
-
-            groups[
-                index % totalGroups
-            ].push(student);
-
-        }
-    );
-
-
-    renderGroups();
-
-}
-
-
-/* =========================================
-   RENDER GROUPS
-========================================= */
-
-function renderGroups() {
-
-    groupsContainer.innerHTML = "";
-
-
-    groups.forEach(
-        (members, index) => {
-
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "group-card";
-
-            card.style.animationDelay =
-                `${index * 0.07}s`;
-
-
-            const header =
-                document.createElement("div");
-
-            header.className =
-                "group-header";
-
-
-            const title =
-                document.createElement("div");
-
-            title.className =
-                "group-title";
-
-            title.textContent =
-                `Kelompok ${index + 1}`;
-
-
-            const count =
-                document.createElement("div");
-
-            count.className =
-                "member-count";
-
-            count.textContent =
-                `${members.length} anggota`;
-
-
-            header.appendChild(title);
-
-            header.appendChild(count);
-
-
-            card.appendChild(header);
-
-
-            members.forEach(
-                student => {
-
-                    const member =
-                        document.createElement("div");
-
-                    member.className =
-                        "member";
-
-                    member.textContent =
-                        student;
-
-                    card.appendChild(member);
-
-                }
-            );
-
-
-            groupsContainer.appendChild(card);
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   SPIN
-========================================= */
-
-function spinWheel() {
-
-    if (spinning) return;
-
-    if (students.length === 0) {
-
-        currentName.textContent =
-            "Tidak ada nama";
-
-        return;
-
-    }
-
-
-    spinning = true;
-
-    spinBtn.disabled = true;
-
-    currentName.textContent =
-        "Memutar...";
-
-    statusText.textContent =
-        "Roda sedang menentukan nama...";
-
-
-    /*
-        Tambahkan beberapa putaran
-        agar animasinya terlihat nyata.
-    */
-
-    const extraRotation =
-        1440 +
-        randomNumber(1440);
-
-
-    rotation += extraRotation;
-
-
-    wheel.style.transform =
-        `rotate(${rotation}deg)`;
-
-
-    setTimeout(() => {
-
-        const winner =
-            students[
-                randomNumber(
-                    students.length
-                )
-            ];
-
-
-        currentName.textContent =
-            winner;
-
-        statusText.textContent =
-            `${winner} terpilih!`;
-
-
-        spinning = false;
-
-        spinBtn.disabled = false;
-
-
-    }, 4100);
-
-}
-
-
-/* =========================================
-   RANDOM GROUP
-========================================= */
-
-function randomizeGroups() {
-
-    createGroups();
-
-    currentName.textContent =
-        "Kelompok selesai!";
-
-    statusText.textContent =
-        "Semua siswa sudah dibagi secara acak.";
-
-}
-
-
-/* =========================================
-   RESET
-========================================= */
-
-function resetSystem() {
-
-    if (spinning) return;
-
-    groups = [];
-
-    currentName.textContent =
-        "Siap?";
-
-    statusText.textContent =
-        'Klik "Putar Roda" untuk memulai.';
-
-    groupsContainer.innerHTML = `
-
-        <div class="empty-state">
-
-            <div class="empty-icon">
-                +
-            </div>
-
-            <h3>
-                Belum ada pembagian
-            </h3>
-
-            <p>
-                Putar roda atau tekan Acak Ulang
-                untuk membuat kelompok.
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================
-   EVENTS
-========================================= */
-
-spinBtn.addEventListener(
-    "click",
-    spinWheel
-);
-
-
-shuffleBtn.addEventListener(
-    "click",
-    randomizeGroups
-);
-
-
-resetBtn.addEventListener(
-    "click",
-    resetSystem
-);
-
-
-/* =========================================
-   GROUP COUNT CHANGE
-========================================= */
-
-groupCount.addEventListener(
-    "change",
-    () => {
-
-        if (groups.length > 0) {
-
-            createGroups();
-
-            statusText.textContent =
-                "Pembagian diperbarui sesuai jumlah kelompok.";
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   KEYBOARD
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.code === "Space" &&
-            document.activeElement.tagName !== "SELECT"
-        ) {
-
-            event.preventDefault();
-
-            spinWheel();
-
-        }
-
-    }
-);
+});
