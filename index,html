@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin Kelompok - XI IPS 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon">XI</div>
+            <div>
+                <strong>XI IPS 1</strong>
+                <small>Spin Kelompok</small>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">← Kembali</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">● RANDOM GROUP</span>
+                <h1>Spin <span>Kelompok</span></h1>
+                <p>Gunakan tombol spin untuk memilih siswa secara acak dari daftar kelas.</p>
+                <button id="spinButton" class="btn primary">SPIN SEKARANG</button>
+            </div>
+
+            <div class="hero-card">
+                <div class="card-top">
+                    <span>HASIL SPIN</span>
+                </div>
+                <div id="result" class="hero-number" style="font-size: 32px; font-weight: bold; text-align: center; margin: 20px 0;">
+                    ?
+                </div>
+                <p id="resultInfo" style="text-align: center;">Belum ada hasil.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/group.js"></script>
+</body>
+</html>
