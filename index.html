@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website resmi kelas XI IPS 1 SMA BAKTI INSANI">
+    <title>XI IPS 1 | SMA BAKTI INSANI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-grid" aria-hidden="true"></div>
+
+    <!-- Animated background -->
+    <div class="background" aria-hidden="true">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="orb orb-c"></div>
+        <div class="grid"></div>
+        <div class="stars">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <a class="brand" href="#home" aria-label="XI IPS 1 Home">
+            <span class="brand-mark">XI</span>
+            <span>
+                <strong>XI IPS 1</strong>
+                <small>SMA BAKTI INSANI</small>
+            </span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="navMenu">
+            <a class="nav-link active" href="#home">Home</a>
+            <a class="nav-link" href="#tentang">Tentang</a>
+            <a class="nav-link" href="#anggota">Anggota</a>
+            <a class="nav-link" href="#jadwal">Jadwal</a>
+            <a class="nav-link" href="#absen">Absen</a>
+            <a class="nav-link" href="#spin">Spin Kelompok</a>
+            <a class="nav-link" href="#galeri">Galeri</a>
+            <a class="nav-link" href="#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME -->
+        <section id="home" class="hero section">
+            <div class="hero-card glass-card reveal">
+                <div class="hero-copy">
+                    <span class="eyebrow"><span class="dot"></span> CLASS XI IPS 1</span>
+                    <h1>Belajar bersama,<br><span>bertumbuh bersama.</span></h1>
+                    <p>
+                        Website kelas XI IPS 1 SMA BAKTI INSANI — tempat menyimpan
+                        informasi, jadwal, anggota, dan momen berharga satu kelas.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#anggota">Lihat Anggota <span>→</span></a>
+                        <a class="btn btn-ghost" href="#jadwal">Lihat Jadwal</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="class-orbit">
+                        <div class="orbit-ring ring-one"></div>
+                        <div class="orbit-ring ring-two"></div>
+                        <div class="class-badge">
+                            <span>XI</span>
+                            <small>IPS 1</small>
+                        </div>
+                    </div>
+                    <div class="floating-chip chip-one">27 Siswa</div>
+                    <div class="floating-chip chip-two">SMA BAKTI INSANI</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TENTANG -->
+        <section id="tentang" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading">
+                    <span class="eyebrow">TENTANG KELAS</span>
+                    <h2>Satu kelas, banyak cerita.</h2>
+                    <p>Ruang digital sederhana untuk mengenal XI IPS 1 lebih dekat.</p>
+                </div>
+
+                <div class="info-grid">
+                    <article class="info-card">
+                        <div class="icon">🎓</div>
+                        <h3>Identitas</h3>
+                        <p>XI IPS 1 adalah kelas di SMA BAKTI INSANI yang menjadi tempat belajar, berdiskusi, dan berkembang bersama.</p>
+                    </article>
+                    <article class="info-card">
+                        <div class="icon">🤝</div>
+                        <h3>Kebersamaan</h3>
+                        <p>Setiap kegiatan, tugas, candaan, dan kerja sama menjadi bagian dari perjalanan yang layak dikenang.</p>
+                    </article>
+                    <article class="info-card">
+                        <div class="icon">✨</div>
+                        <h3>Semangat</h3>
+                        <p>Terus belajar, saling mendukung, dan membuat suasana kelas menjadi tempat yang nyaman untuk bertumbuh.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANGGOTA -->
+        <section id="anggota" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading heading-row">
+                    <div>
+                        <span class="eyebrow">ANGGOTA KELAS</span>
+                        <h2>27 wajah, satu cerita.</h2>
+                        <p>Daftar anggota XI IPS 1 SMA BAKTI INSANI.</p>
+                    </div>
+                    <div class="count-badge"><strong>27</strong><span>Siswa</span></div>
+                </div>
+
+                <div class="members-grid" id="membersGrid"></div>
+            </div>
+        </section>
+
+        <!-- JADWAL -->
+        <section id="jadwal" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading">
+                    <span class="eyebrow">JADWAL PELAJARAN</span>
+                    <h2>Agenda belajar minggu ini.</h2>
+                    <p>Jadwal pelajaran XI IPS 1.</p>
+                </div>
+
+                <div class="schedule-grid" id="scheduleGrid"></div>
+            </div>
+        </section>
+
+
+        <!-- ABSEN -->
+        <section id="absen" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading heading-row">
+                    <div>
+                        <span class="eyebrow">ABSENSI HARIAN</span>
+                        <h2>Absen sekali setiap hari.</h2>
+                        <p>Pilih nama kamu. Tidak perlu mengetik username.</p>
+                    </div>
+                    <div class="count-badge" id="attendanceSummary">
+                        <strong>0</strong><span>Hadir hari ini</span>
+                    </div>
+                </div>
+
+                <div class="attendance-panel">
+                    <div class="attendance-form">
+                        <label for="attendanceName">Pilih nama siswa</label>
+                        <select id="attendanceName">
+                            <option value="">Pilih nama...</option>
+                        </select>
+                        <button class="btn btn-primary" id="attendanceButton" type="button">
+                            Absen Sekarang <span>✓</span>
+                        </button>
+                        <p class="attendance-note" id="attendanceStatus">
+                            Satu nama hanya bisa absen sekali dalam satu hari pada perangkat ini.
+                        </p>
+                    </div>
+
+                    <div class="attendance-list-wrap">
+                        <div class="mini-heading">
+                            <span>DAFTAR HADIR HARI INI</span>
+                            <span id="attendanceDate"></span>
+                        </div>
+                        <div class="attendance-list" id="attendanceList">
+                            <div class="empty-state">Belum ada yang absen hari ini.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPIN KELOMPOK -->
+        <section id="spin" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading">
+                    <span class="eyebrow">SPIN KELOMPOK</span>
+                    <h2>Acak kelompok dengan gaya Aurora.</h2>
+                    <p>Roda akan berputar, nama diundi satu per satu, lalu 27 siswa dibagi secara seimbang.</p>
+                </div>
+
+                <div class="spin-toolbar">
+                    <div class="spin-control-card">
+                        <label for="groupCount">Jumlah kelompok</label>
+                        <select id="groupCount">
+                            <option value="2">2 Kelompok</option>
+                            <option value="3">3 Kelompok</option>
+                            <option value="4" selected>4 Kelompok</option>
+                            <option value="5">5 Kelompok</option>
+                            <option value="6">6 Kelompok</option>
+                        </select>
+                    </div>
+                    <div class="spin-actions">
+                        <button class="btn btn-ghost" id="shuffleButton" type="button">🔀 Acak Urutan</button>
+                        <button class="btn btn-primary" id="spinButton" type="button">🎡 MULAI SPIN</button>
+                    </div>
+                </div>
+
+                <div class="roulette-layout">
+                    <div class="roulette-wrap" id="spinStage">
+                        <div class="roulette-pointer">▼</div>
+                        <div class="roulette-wheel" id="rouletteWheel">
+                            <div class="wheel-labels" id="wheelLabels"></div>
+                            <div class="wheel-center">
+                                <strong id="spinResult">XI</strong>
+                                <small>IPS 1</small>
+                            </div>
+                        </div>
+                        <div class="roulette-glow"></div>
+                    </div>
+
+                    <div class="draw-panel">
+                        <span class="draw-kicker">LIVE DRAW</span>
+                        <div class="draw-number" id="drawNumber">—</div>
+                        <h3 id="drawName">Siap mengundi</h3>
+                        <p id="drawStatus">Tekan <b>MULAI SPIN</b> untuk membagi kelompok.</p>
+                        <div class="draw-progress"><span id="drawProgress"></span></div>
+                        <small id="drawCounter">0 / 27 siswa</small>
+                    </div>
+                </div>
+
+                <div class="groups-grid" id="groupsGrid"></div>
+            </div>
+        </section>
+
+        <!-- GALERI -->
+        <section id="galeri" class="section">
+            <div class="section-card glass-card reveal">
+                <div class="section-heading">
+                    <span class="eyebrow">GALERI KELAS</span>
+                    <h2>Momen yang ingin dikenang.</h2>
+                    <p>Tempat untuk menampilkan foto kegiatan kelas.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-placeholder">
+                        <span>📸</span>
+                        <h3>Foto Kelas</h3>
+                        <p>Tambahkan foto kelas di folder <b>assets</b>.</p>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <span>🎉</span>
+                        <h3>Kegiatan</h3>
+                        <p>Dokumentasikan kegiatan dan momen bersama.</p>
+                    </div>
+                    <div class="gallery-placeholder">
+                        <span>🏆</span>
+                        <h3>Pencapaian</h3>
+                        <p>Abadikan prestasi dan pengalaman terbaik kelas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAK -->
+        <section id="kontak" class="section">
+            <div class="section-card contact-card glass-card reveal">
+                <div class="contact-content">
+                    <span class="eyebrow">MEDIA SOSIAL</span>
+                    <h2>Ikuti perjalanan XI IPS 1.</h2>
+                    <p>Tambahkan akun Instagram kelas pada tombol di bawah.</p>
+                    <a class="btn btn-instagram" href="https://www.instagram.com/eleven._ips1?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                        <span>◎</span> Instagram Kelas
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> XI IPS 1 · SMA BAKTI INSANI</p>
+        <span>Dibuat untuk menyimpan cerita satu kelas.</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
