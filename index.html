@@ -182,32 +182,32 @@
         </section>
 
         <!-- CLASS MOMENTS -->
-        <section id="moments" class="section">
+       <section id="moments">
+    <div class="moments-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <span>MEMORIES</span>
+            <h2>Class Moments</h2>
+            <p>Simpan dokumentasi kegiatan kelas.</p>
+        </div>
+        <!-- Tombol untuk menambah foto baru -->
+        <button id="addMomentBtn" class="btn primary" style="padding: 10px 16px; cursor: pointer;">+ Tambah Momen</button>
+    </div>
 
-            <div class="section-heading">
+    <!-- Form tersembunyi untuk upload foto (akan muncul saat tombol Tambah diklik) -->
+    <div id="momentFormContainer" style="display: none; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+        <input type="text" id="momentCaption" placeholder="Keterangan kegiatan (cth: Jam Kosong / Olahraga)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        <input type="file" id="momentFile" accept="image/*" style="margin-bottom: 10px; color: white;">
+        <div>
+            <button id="saveMomentBtn" class="btn primary" style="padding: 6px 12px; cursor: pointer;">Simpan</button>
+            <button id="cancelMomentBtn" style="padding: 6px 12px; cursor: pointer; background: transparent; color: white; border: 1px solid #ccc; border-radius: 6px;">Batal</button>
+        </div>
+    </div>
 
-                <div>
-                    <span class="section-label">MEMORIES</span>
-                    <h2>Class Moments</h2>
-                    <p>Simpan dokumentasi kegiatan kelas.</p>
-                </div>
-
-                <label class="upload-btn">
-                    + Tambah Foto
-                    <input
-                        type="file"
-                        id="photoInput"
-                        accept="image/*"
-                        multiple
-                        hidden
-                    >
-                </label>
-
-            </div>
-
-            <div id="gallery" class="gallery"></div>
-
-        </section>
+    <!-- Wadah tempat kartu foto momen akan muncul -->
+    <div id="momentsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <!-- Foto-foto akan dimuat otomatis lewat JavaScript di sini -->
+    </div>
+</section>
 
         <!-- SPOTIFY -->
         <section id="spotify" class="section">
