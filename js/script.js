@@ -592,3 +592,121 @@ setInterval(
     updateNextClass,
     30000
 );
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addBtn = document.getElementById('addMomentBtn');
+    const formContainer = document.getElementById('momentFormContainer');
+    const cancelBtn = document.getElementById('cancelMomentBtn');
+    const saveBtn = document.getElementById('saveMomentBtn');
+    const captionInput = document.getElementById('momentCaption');
+    const fileInput = document.getElementById('momentFile');
+    const momentsGrid = document.getElementById('momentsGrid');
+
+    // Ambil data moments dari localStorage (jika ada)
+    let moments = JSON.parse(localStorage.getItem('classMoments')) || [
+        { id: 1, caption: "Kumpul Kelas XI IPS 1", image: "assets/images/default-moment.jpg" } // Contoh awal
+    ];
+
+    function renderMoments() {
+        momentsGrid.innerHTML = '';
+        
+        if (moments.length === 0) {
+            momentsGrid.innerHTML = `<p style="color: gray; grid-column: 1/-1;">Belum ada dokumentasi foto.</p>`;
+            return;
+        }
+
+        moments.forEach((moment, index) => {
+            const card = document.createElement('div');
+            card.style.cssText = "background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); padding: 10px;";
+            
+            card.innerHTML = `
+                <img src="${moment.image}" alt="Moment" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                <p style="color: white; font-weight: 500; margin-bottom: 12px; font-size: 14px;">${moment.caption}</p>
+                <div style="display: flex; gap: 8px;">
+                    <button onclick="changePhoto(${moment.id})" style="flex: 1; padding: 6px; font-size: 12px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;">Ganti Foto</button>
+                    <button onclick="deletePhoto(${moment.id})" style="flex: 1; padding: 6px; font-size: 12px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">Hapus</button>
+                </div>
+            `;
+            momentsGrid.appendChild(card);
+        });
+    }
+
+    // Tampilkan form tambah
+    addBtn.addEventListener('click', () => {
+        formContainer.style.display = 'block';
+    });
+
+    // Sembunyikan form tambah
+    cancelBtn.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+        captionInput.value = '';
+        fileInput.value = '';
+    });
+
+    // Simpan foto baru
+    saveBtn.addEventListener('click', () => {
+        const caption = captionInput.value.trim();
+        const file = fileInput.files[0];
+
+        if (!caption || !file) {
+            alert('Mohon isi keterangan dan pilih foto terlebih dahulu!');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const newMoment = {
+                id: Date.now(),
+                caption: caption,
+                image: e.target.result // Menyimpan gambar dalam format Base64
+            };
+
+            moments.push(newMoment);
+            localStorage.setItem('classMoments', JSON.stringify(moments));
+            
+            renderMoments();
+            formContainer.style.display = 'none';
+            captionInput.value = '';
+            fileInput.value = '';
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Jalankan render awal saat halaman dibuka
+    renderMoments();
+});
+
+// Fungsi Global untuk Hapus Foto
+window.deletePhoto = function(id) {
+    if (confirm('Yakin ingin menghapus foto momen ini?')) {
+        let moments = JSON.parse(localStorage.getItem('classMoments')) || [];
+        moments = moments.filter(m => m.id !== id);
+        localStorage.setItem('classMoments', JSON.stringify(moments));
+        location.reload(); // Refresh halaman untuk memperbarui tampilan
+    }
+};
+
+// Fungsi Global untuk Ganti Foto
+window.changePhoto = function(id) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                let moments = JSON.parse(localStorage.getItem('classMoments')) || [];
+                const index = moments.findIndex(m => m.id === id);
+                if (index !== -1) {
+                    moments[index].image = event.target.result;
+                    localStorage.setItem('classMoments', JSON.stringify(moments));
+                    location.reload();
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    input.click();
+};
