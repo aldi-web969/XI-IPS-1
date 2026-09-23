@@ -114,6 +114,7 @@
         </section>
 
         <!-- MOMENTS SECTION (DOKUMENTASI KELAS) -->
+
         <section id="moments" style="margin-bottom: 40px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <div>
@@ -123,14 +124,27 @@
                 </div>
             </div>
 
-            <!-- Wadah Foto Momen yang bisa dilihat semua pengunjung -->
-            <div id="momentsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <!-- Wadah Galeri Foto yang Pasti Muncul dan Bisa Dilihat Semua Pengunjung -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                
+                <!-- Kartu Momen 1 -->
                 <div style="background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); padding: 10px;">
-                    <div style="width: 100%; height: 180px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888; margin-bottom: 10px;">
-                        Foto Kegiatan XI IPS 1
+                    <div style="width: 100%; height: 180px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; margin-bottom: 10px; font-weight: 500;">
+                        📷 Foto Kegiatan 1
                     </div>
-                    <p style="color: white; font-weight: 500; font-size: 14px; margin: 0;">Kumpul Bersama Kelas</p>
+                    <p style="color: white; font-weight: 500; font-size: 14px; margin: 0 0 5px 0;">Kumpul Bersama XI IPS 1</p>
+                    <small style="color: #888; font-size: 12px;">Suasana kebersamaan kelas</small>
                 </div>
+
+                <!-- Kartu Momen 2 -->
+                <div style="background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); padding: 10px;">
+                    <div style="width: 100%; height: 180px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #94a3b8; margin-bottom: 10px; font-weight: 500;">
+                        📷 Foto Kegiatan 2
+                    </div>
+                    <p style="color: white; font-weight: 500; font-size: 14px; margin: 0 0 5px 0;">Jam Kosong / Kerja Kelompok</p>
+                    <small style="color: #888; font-size: 12px;">Keseruan di dalam kelas</small>
+                </div>
+
             </div>
         </section>
 
