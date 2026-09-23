@@ -2,39 +2,61 @@
 
 // 1. DATA SISWA
 const students = [
-    "AL SILA RAMADHANI", "ALDIANSYAH PUTRA KUSUMA", "Andin Aulia Agustin", "ANDINI AULIA WIJAYA", "ANJU MAULANA LUMBAN GAUL", "Azka Fina", "David Jonathan Ketaren", "FILZAH AMARTA PUTRI HIDAYAT", "HALIMATUL JULHIJAH", "JEREMI THOMAS WARASI", "Lois Zadol Zai", "Melati Kirana Putri", "MOCH. FAJAR NURJAYADI", "MOCHAMAD RIZKI ADITYA PERMANA", "MUHAMAD ADILLAH KHOIR", "Muhamad Hairil Nur Zaman", "MUHAMAD REVAN AULIA MAKMUR", "Muhammad Azriel Daniyal", "NAZWA OKTAPIYANI", "REJEKI KURNIAWAN WARUWU", "RENO FEDRIAN", "RYAD ZABAL ARASY", "Siti Alayya Zulaikha", "SITI DARA NURHAFNI", "SITI PAUJIAH", "SYARIFFA NURIL AINI", "YADI ROSDIANSYAH"
+    "AL SILA RAMADHANI", "ALDIANSYAH PUTRA KUSUMA", "Andin Aulia Agustin", 
+    "ANDINI AULIA WIJAYA", "ANJU MAULANA LUMBAN GAUL", "Azka Fina", 
+    "David Jonathan Ketaren", "FILZAH AMARTA PUTRI HIDAYAT", "HALIMATUL JULHIJAH", 
+    "JEREMI THOMAS WARASI", "Lois Zadol Zai", "Melati Kirana Putri", 
+    "MOCH. FAJAR NURJAYADI", "MOCHAMAD RIZKI ADITYA PERMANA", "MUHAMAD ADILLAH KHOIR", 
+    "Muhamad Hairil Nur Zaman", "MUHAMAD REVAN AULIA MAKMUR", "Muhammad Azriel Daniyal", 
+    "NAZWA OKTAPIYANI", "REJEKI KURNIAWAN WARUWU", "RENO FEDRIAN", 
+    "RYAD ZABAL ARASY", "Siti Alayya Zulaikha", "SITI DARA NURHAFNI", 
+    "SITI PAUJIAH", "SYARIFFA NURIL AINI", "YADI ROSDIANSYAH"
 ];
 
 // 2. DATA JADWAL PELAJARAN
 const scheduleData = {
     "Senin": [
-        { time: "07:00 - 08:30", subject: "Upacara & Pendalaman Agama" },
-        { time: "08:30 - 10:00", subject: "Ekonomi" },
-        { time: "10:15 - 11:45", subject: "Sejarah" },
-        { time: "12:30 - 14:00", subject: "Sosiologi" }
+        { time: "07.40 - 09.00", subject: "PJOK" },
+        { time: "09.00 - 10.20", subject: "PKN" },
+        { time: "10.20 - 10.50", subject: "Istirahat" },
+        { time: "10.50 - 12.10", subject: "Informatika" },
+        { time: "12.10 - 12.50 & 13.30 - 14.10", subject: "B. Jepang" },
+        { time: "12.50 - 13.30", subject: "Istirahat" },
+        { time: "14.10 - 15.30", subject: "PAI / Kristen" }
     ],
     "Selasa": [
-        { time: "07:00 - 08:30", subject: "Matematika" },
-        { time: "08:30 - 10:00", subject: "Geografi" },
-        { time: "10:15 - 11:45", subject: "Bahasa Indonesia" },
-        { time: "12:30 - 14:00", subject: "Bahasa Inggris" }
+        { time: "07.40 - 09.00", subject: "Sosiologi" },
+        { time: "09.00 - 10.20", subject: "B. Jepang" },
+        { time: "10.20 - 10.50", subject: "Istirahat" },
+        { time: "10.50 - 12.10", subject: "Seni Budaya" },
+        { time: "12.10 - 12.50 & 13.30 - 14.10", subject: "Ekonomi" },
+        { time: "12.50 - 13.30", subject: "Istirahat" },
+        { time: "14.10 - 14.50", subject: "BK" },
+        { time: "14.50 - 15.30", subject: "BTQ" }
     ],
     "Rabu": [
-        { time: "07:00 - 08:30", subject: "Ekonomi" },
-        { time: "08:30 - 10:00", subject: "Sosiologi" },
-        { time: "10:15 - 11:45", subject: "Sejarah Peminatan" },
-        { time: "12:30 - 14:00", subject: "Seni Budaya" }
+        { time: "07.40 - 09.00", subject: "Sosiologi" },
+        { time: "09.00 - 09.40", subject: "Matematika" },
+        { time: "09.40 - 10.20 & 10.50 - 12.10", subject: "B. Indonesia" },
+        { time: "10.20 - 10.50", subject: "Istirahat" },
+        { time: "12.10 - 12.50 & 13.30 - 14.10", subject: "Informatika" },
+        { time: "12.50 - 13.30", subject: "Istirahat" },
+        { time: "14.10 - 15.30", subject: "Sejarah" }
     ],
     "Kamis": [
-        { time: "07:00 - 08:30", subject: "Geografi" },
-        { time: "08:30 - 10:00", subject: "Matematika" },
-        { time: "10:15 - 11:45", subject: "Bahasa Inggris" },
-        { time: "12:30 - 14:00", subject: "Penjasorkes" }
+        { time: "07.40 - 09.00", subject: "B. Inggris" },
+        { time: "09.00 - 10.20", subject: "B. Sunda" },
+        { time: "10.20 - 10.50", subject: "Istirahat" },
+        { time: "10.50 - 12.10", subject: "Matematika" },
+        { time: "12.10 - 12.50 & 13.30 - 14.10", subject: "Geografi" },
+        { time: "12.50 - 13.30", subject: "Istirahat" },
+        { time: "14.10 - 15.30", subject: "B. Mandarin" }
     ],
     "Jumat": [
-        { time: "07:00 - 08:30", subject: "Pendidikan Agama" },
-        { time: "08:30 - 10:00", subject: "Bahasa Indonesia" },
-        { time: "10:00 - 11:30", subject: "Kewarganegaraan (PPKn)" }
+        { time: "07.40 - 09.00", subject: "Ekonomi" },
+        { time: "09.00 - 09.40 & 10.00 - 10.40", subject: "Geografi" },
+        { time: "09.40 - 10.00", subject: "Istirahat" },
+        { time: "10.40 - 11.20", subject: "Klinik Belajar" }
     ]
 };
 
