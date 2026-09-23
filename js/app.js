@@ -2,12 +2,7 @@
 
 // 1. DATA SISWA
 const students = [
-    "Ahmad", "Aldiansyah", "Andini", "Aurel", "Bintang", 
-    "Cinta", "Dimas", "Farel", "Fira", "Gilang", 
-    "Hana", "Iqbal", "Keisha", "M. Fajri", "Nabila", 
-    "Nazwa", "Rafli", "Raka", "Ratu", "Rehan", 
-    "Rizki", "Salsabila", "Tegar", "Vina", "Wahyudi", 
-    "Zahra", "Zidan"
+    "AL SILA RAMADHANI", "ALDIANSYAH PUTRA KUSUMA", "Andin Aulia Agustin", "ANDINI AULIA WIJAYA", "ANJU MAULANA LUMBAN GAUL", "Azka Fina", "David Jonathan Ketaren", "FILZAH AMARTA PUTRI HIDAYAT", "HALIMATUL JULHIJAH", "JEREMI THOMAS WARASI", "Lois Zadol Zai", "Melati Kirana Putri", "MOCH. FAJAR NURJAYADI", "MOCHAMAD RIZKI ADITYA PERMANA", "MUHAMAD ADILLAH KHOIR", "Muhamad Hairil Nur Zaman", "MUHAMAD REVAN AULIA MAKMUR", "Muhammad Azriel Daniyal", "NAZWA OKTAPIYANI", "REJEKI KURNIAWAN WARUWU", "RENO FEDRIAN", "RYAD ZABAL ARASY", "Siti Alayya Zulaikha", "SITI DARA NURHAFNI", "SITI PAUJIAH", "SYARIFFA NURIL AINI", "YADI ROSDIANSYAH"
 ];
 
 // 2. DATA JADWAL PELAJARAN
