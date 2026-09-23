@@ -1,20 +1,21 @@
+// Daftar nama siswa kelas XI IPS 1 (Total 27 siswa)
 const students = [
     "AL SILA RAMADHANI",
-    "ALDIANSYAH PUTRA KUSUMA",
+    "ALDIYANSYAH PUTRA KUSUMA",
     "Andin Aulia Agustin",
     "ANDINI AULIA WIJAYA",
     "ANJU MAULANA LUMBAN GAUL",
-    "Azka Fina",
+    "Aska Fina",
     "David Jonathan Ketaren",
     "FILZAH AMARTA PUTRI HIDAYAT",
-    "HALIMATUL JULHIJAH",
+    "HALIMATUL JULIHAH",
     "JEREMI THOMAS WARASI",
-    "Lois Zadol Zai",
+    "Lois Zadoi Zai",
     "Melati Kirana Putri",
     "MOCH. FAJAR NURJAYADI",
     "MOCHAMAD RIZKI ADITYA PERMANA",
-    "MUHAMAD ADILLAH KHOIR",
-    "Muhamad Hairil Nur Zaman",
+    "MUHAMAD ABDILAH KHOR",
+    "Muhamad Hanif Nur Zaman",
     "MUHAMAD REVAN AULIA MAKMUR",
     "Muhammad Azriel Daniyal",
     "NAZWA OKTAPIYANI",
@@ -22,66 +23,62 @@ const students = [
     "RENO FEDRIAN",
     "RYAD ZABAL ARASY",
     "Siti Alayya Zulaikha",
-    "SITI DARA NURHAFNI",
+    "SITI DARA NURHAFNAH",
     "SITI PAUJIAH",
-    "SYARIFFA NURIL AINI",
+    "SYARIFAH NURIL AINI",
     "YADI ROSDIANSYAH"
 ];
 
+const spinButton = document.getElementById('spinButton');
+const resultElement = document.getElementById('result');
+const resultInfoElement = document.getElementById('resultInfo');
 
-const spinButton =
-    document.getElementById("spinButton");
+let isSpinning = false;
 
-const result =
-    document.getElementById("result");
-
-const resultInfo =
-    document.getElementById("resultInfo");
-
-
-spinButton.addEventListener("click", () => {
-
+spinButton.addEventListener('click', function() {
+    if (isSpinning) return; // Mencegah klik ganda saat sedang berputar
+    
+    isSpinning = true;
     spinButton.disabled = true;
-
-    let count = 0;
-
-    const animation =
-        setInterval(() => {
-
-            const random =
-                students[
-                    Math.floor(
-                        Math.random() *
-                        students.length
-                    )
-                ];
-
-            result.textContent = random;
-
-            count++;
-
-            if (count >= 25) {
-
-                clearInterval(animation);
-
-                const winner =
-                    students[
-                        Math.floor(
-                            Math.random() *
-                            students.length
-                        )
-                    ];
-
-                result.textContent =
-                    winner;
-
-                resultInfo.textContent =
-                    "Siswa terpilih secara acak.";
-
-                spinButton.disabled = false;
-
-            }
-
-        }, 80);
-
+    spinButton.style.opacity = '0.6';
+    spinButton.textContent = 'MEMUTAR...';
+    
+    resultInfoElement.textContent = 'Menentukan siswa secara acak...';
+    
+    let counter = 0;
+    const totalFlips = 30; // Jumlah pergantian nama sebelum berhenti
+    const intervalTime = 70; // Kecepatan pergantian (semakin kecil semakin cepat)
+    
+    const spinInterval = setInterval(() => {
+        // Tampilkan nama acak untuk efek animasi berputar
+        const randomIndex = Math.floor(Math.random() * students.length);
+        resultElement.textContent = students[randomIndex];
+        resultElement.style.transform = `scale(${1 + (Math.random() * 0.15)})`;
+        
+        counter++;
+        
+        // Ketika mencapai batas perputaran, hentikan dan tentukan hasil akhir
+        if (counter >= totalFlips) {
+            clearInterval(spinInterval);
+            
+            // Pilih hasil akhir yang benar-benar acak
+            const finalIndex = Math.floor(Math.random() * students.length);
+            const winner = students[finalIndex];
+            
+            // Tampilkan hasil akhir
+            resultElement.textContent = winner;
+            resultElement.style.transform = 'scale(1.15)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 250);
+            
+            resultInfoElement.innerHTML = `Terpilih: <strong style="color: var(--primary, #6366f1);">${winner}</strong> 🎉`;
+            
+            // Kembalikan tombol ke kondisi semula
+            spinButton.disabled = false;
+            spinButton.style.opacity = '1';
+            spinButton.textContent = 'SPIN LAGI';
+            isSpinning = false;
+        }
+    }, intervalTime);
 });
