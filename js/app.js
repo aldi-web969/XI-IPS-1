@@ -1,423 +1,158 @@
-/* =========================================
-   DATA SISWA
-========================================= */
+// app.js - Logika Utama XI IPS 1 Class Portal
 
+// 1. DATA SISWA
 const students = [
-    "AL SILA RAMADHANI",
-    "ALDIANSYAH PUTRA KUSUMA",
-    "Andin Aulia Agustin",
-    "ANDINI AULIA WIJAYA",
-    "ANJU MAULANA LUMBAN GAUL",
-    "Azka Fina",
-    "David Jonathan Ketaren",
-    "FILZAH AMARTA PUTRI HIDAYAT",
-    "HALIMATUL JULHIJAH",
-    "JEREMI THOMAS WARASI",
-    "Lois Zadol Zai",
-    "Melati Kirana Putri",
-    "MOCH. FAJAR NURJAYADI",
-    "MOCHAMAD RIZKI ADITYA PERMANA",
-    "MUHAMAD ADILLAH KHOIR",
-    "Muhamad Hairil Nur Zaman",
-    "MUHAMAD REVAN AULIA MAKMUR",
-    "Muhammad Azriel Daniyal",
-    "NAZWA OKTAPIYANI",
-    "REJEKI KURNIAWAN WARUWU",
-    "RENO FEDRIAN",
-    "RYAD ZABAL ARASY",
-    "Siti Alayya Zulaikha",
-    "SITI DARA NURHAFNI",
-    "SITI PAUJIAH",
-    "SYARIFFA NURIL AINI",
-    "YADI ROSDIANSYAH"
+    "Ahmad", "Aldiansyah", "Andini", "Aurel", "Bintang", 
+    "Cinta", "Dimas", "Farel", "Fira", "Gilang", 
+    "Hana", "Iqbal", "Keisha", "M. Fajri", "Nabila", 
+    "Nazwa", "Rafli", "Raka", "Ratu", "Rehan", 
+    "Rizki", "Salsabila", "Tegar", "Vina", "Wahyudi", 
+    "Zahra", "Zidan"
 ];
 
-
-/* =========================================
-   JADWAL
-========================================= */
-
-const schedules = {
-
-    Senin: [
-        ["PJOK", "07.40–09.00"],
-        ["PKN", "09.00–10.20"],
-        ["Istirahat", "10.20–10.50"],
-        ["Informatika", "10.50–12.10"],
-        ["B. Jepang", "12.10–12.50"],
-        ["Istirahat", "12.50–13.30"],
-        ["B. Jepang", "13.30–14.10"],
-        ["PAI / Kristen", "14.10–15.30"]
+// 2. DATA JADWAL PELAJARAN
+const scheduleData = {
+    "Senin": [
+        { time: "07:00 - 08:30", subject: "Upacara & Pendalaman Agama" },
+        { time: "08:30 - 10:00", subject: "Ekonomi" },
+        { time: "10:15 - 11:45", subject: "Sejarah" },
+        { time: "12:30 - 14:00", subject: "Sosiologi" }
     ],
-
-    Selasa: [
-        ["Sosiologi", "07.40–09.00"],
-        ["B. Jepang", "09.00–10.20"],
-        ["Istirahat", "10.20–10.50"],
-        ["Seni Budaya", "10.50–12.10"],
-        ["Ekonomi", "12.10–12.50"],
-        ["Istirahat", "12.50–13.30"],
-        ["Ekonomi", "13.30–14.10"],
-        ["BK", "14.10–14.50"],
-        ["BTQ", "14.50–15.30"]
+    "Selasa": [
+        { time: "07:00 - 08:30", subject: "Matematika" },
+        { time: "08:30 - 10:00", subject: "Geografi" },
+        { time: "10:15 - 11:45", subject: "Bahasa Indonesia" },
+        { time: "12:30 - 14:00", subject: "Bahasa Inggris" }
     ],
-
-    Rabu: [
-        ["Sosiologi", "07.40–09.00"],
-        ["Matematika", "09.00–09.40"],
-        ["B. Indonesia", "09.40–10.20"],
-        ["Istirahat", "10.20–10.50"],
-        ["B. Indonesia", "10.50–12.10"],
-        ["Informatika", "12.10–12.50"],
-        ["Istirahat", "12.50–13.30"],
-        ["Informatika", "13.30–14.10"],
-        ["Sejarah", "14.10–15.30"]
+    "Rabu": [
+        { time: "07:00 - 08:30", subject: "Ekonomi" },
+        { time: "08:30 - 10:00", subject: "Sosiologi" },
+        { time: "10:15 - 11:45", subject: "Sejarah Peminatan" },
+        { time: "12:30 - 14:00", subject: "Seni Budaya" }
     ],
-
-    Kamis: [
-        ["B. Inggris", "07.40–09.00"],
-        ["B. Sunda", "09.00–10.20"],
-        ["Istirahat", "10.20–10.50"],
-        ["Matematika", "10.50–12.10"],
-        ["Geografi", "12.10–12.50"],
-        ["Istirahat", "12.50–13.30"],
-        ["Geografi", "13.30–14.10"],
-        ["B. Mandarin", "14.10–15.30"]
+    "Kamis": [
+        { time: "07:00 - 08:30", subject: "Geografi" },
+        { time: "08:30 - 10:00", subject: "Matematika" },
+        { time: "10:15 - 11:45", subject: "Bahasa Inggris" },
+        { time: "12:30 - 14:00", subject: "Penjasorkes" }
     ],
-
-    Jumat: [
-        ["Ekonomi", "07.40–09.00"],
-        ["Geografi", "09.00–09.40"],
-        ["Istirahat", "09.40–10.00"],
-        ["Geografi", "10.00–10.40"],
-        ["Klinik Belajar", "10.40–11.20"]
+    "Jumat": [
+        { time: "07:00 - 08:30", subject: "Pendidikan Agama" },
+        { time: "08:30 - 10:00", subject: "Bahasa Indonesia" },
+        { time: "10:00 - 11:30", subject: "Kewarganegaraan (PPKn)" }
     ]
 };
 
-
-/* =========================================
-   LOADING
-========================================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        const loader = document.getElementById("loader");
-
-        if (loader) {
-            loader.classList.add("hide");
-        }
-
-    }, 1500);
-
-});
-
-
-/* =========================================
-   TAMPILKAN SISWA
-========================================= */
-
-const studentList = document.getElementById("studentList");
-
-students.forEach((name, index) => {
-
-    const card = document.createElement("div");
-
-    card.className = "student";
-
-    card.innerHTML = `
-        <div class="student-number">
-            ${String(index + 1).padStart(2, "0")}
-        </div>
-
-        <div class="student-name">
-            ${name}
-        </div>
-    `;
-
-    studentList.appendChild(card);
-
-});
-
-
-/* =========================================
-   JADWAL
-========================================= */
-
-const scheduleList = document.getElementById("scheduleList");
-const dayButtons = document.querySelectorAll(".day-btn");
-
-function showSchedule(day) {
-
-    scheduleList.innerHTML = "";
-
-    schedules[day].forEach(item => {
-
-        const div = document.createElement("div");
-
-        div.className = "schedule-item";
-
-        div.innerHTML = `
-            <strong>${item[0]}</strong>
-            <span>${item[1]}</span>
-        `;
-
-        scheduleList.appendChild(div);
-
-    });
-}
-
-showSchedule("Senin");
-
-
-dayButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        dayButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-        showSchedule(button.dataset.day);
-
-    });
-
-});
-
-
-/* =========================================
-   JAM DIGITAL
-========================================= */
-
-function updateClock() {
-
-    const now = new Date();
-
-    const time =
-        now.toLocaleTimeString("id-ID", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        });
-
-    document.getElementById("currentTime").textContent = time;
-
-}
-
-updateClock();
-
-setInterval(updateClock, 1000);
-
-
-/* =========================================
-   CLASS MOMENTS
-========================================= */
-
-const photoInput = document.getElementById("photoInput");
-const gallery = document.getElementById("gallery");
-
-let photos =
-    JSON.parse(
-        localStorage.getItem("classMomentsPhotos")
-    ) || [];
-
-
-function renderGallery() {
-
-    gallery.innerHTML = "";
-
-    if (photos.length === 0) {
-
-        gallery.innerHTML = `
-            <div class="gallery-empty">
-                Belum ada foto Class Moments.
-                <br>
-                Klik "Tambah Foto" untuk menambahkan foto.
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- A. RENDER DAFTAR SISWA ---
+    const studentListEl = document.getElementById("studentList");
+    if (studentListEl) {
+        studentListEl.innerHTML = students.map((name, index) => `
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; color: #fff;">${index + 1}</div>
+                <div>
+                    <strong style="display: block; font-size: 15px; color: #fff;">${name}</strong>
+                    <small style="color: #888;">XI IPS 1</small>
+                </div>
             </div>
-        `;
-
-        return;
+        `).join('');
     }
 
-    photos.forEach((photo, index) => {
-
-        const card = document.createElement("div");
-
-        card.className = "photo-card";
-
-        card.innerHTML = `
-
-            <img src="${photo}" alt="Class Moment">
-
-            <button
-                class="delete-photo"
-                data-index="${index}"
-                title="Hapus foto"
-            >
-                ×
-            </button>
-
-        `;
-
-        gallery.appendChild(card);
-
-    });
-
-}
-
-
-photoInput.addEventListener("change", event => {
-
-    const files = [...event.target.files];
-
-    files.forEach(file => {
-
-        const reader = new FileReader();
-
-        reader.onload = e => {
-
-            photos.push(e.target.result);
-
-            localStorage.setItem(
-                "classMomentsPhotos",
-                JSON.stringify(photos)
-            );
-
-            renderGallery();
-
-        };
-
-        reader.readAsDataURL(file);
-
-    });
-
-    photoInput.value = "";
-
-});
-
-
-gallery.addEventListener("click", event => {
-
-    const button =
-        event.target.closest(".delete-photo");
-
-    if (!button) return;
-
-    const index =
-        Number(button.dataset.index);
-
-    photos.splice(index, 1);
-
-    localStorage.setItem(
-        "classMomentsPhotos",
-        JSON.stringify(photos)
-    );
-
-    renderGallery();
-
-});
-
-
-renderGallery();
-
-
-/* =========================================
-   NEXT CLASS
-========================================= */
-
-const weeklySchedule = {
-
-    1: schedules.Senin,
-    2: schedules.Selasa,
-    3: schedules.Rabu,
-    4: schedules.Kamis,
-    5: schedules.Jumat
-};
-
-
-function timeToMinutes(time) {
-
-    const clean = time.replace(".", ":");
-
-    const [hour, minute] =
-        clean.split(":").map(Number);
-
-    return hour * 60 + minute;
-
-}
-
-
-function updateNextClass() {
-
-    const now = new Date();
-
-    const day = now.getDay();
-
-    const currentMinutes =
-        now.getHours() * 60 + now.getMinutes();
-
-    const nextClass =
-        document.getElementById("nextClass");
-
-    const nextTime =
-        document.getElementById("nextTime");
-
-
-    if (day === 0 || day === 6) {
-
-        nextClass.textContent =
-            "Tidak ada jadwal";
-
-        nextTime.textContent =
-            "Hari libur";
-
-        return;
-    }
-
-
-    const today =
-        weeklySchedule[day];
-
-    if (!today) return;
-
-
-    for (const lesson of today) {
-
-        const start =
-            lesson[1].split("–")[0];
-
-        const startMinutes =
-            timeToMinutes(start);
-
-        if (
-            lesson[0] !== "Istirahat" &&
-            currentMinutes < startMinutes
-        ) {
-
-            nextClass.textContent =
-                lesson[0];
-
-            nextTime.textContent =
-                lesson[1];
-
+    // --- B. RENDER JADWAL PELAJARAN & TOMBOL HARI ---
+    const scheduleListEl = document.getElementById("scheduleList");
+    const dayButtons = document.querySelectorAll(".day-btn");
+
+    function renderSchedule(day) {
+        if (!scheduleListEl) return;
+        const items = scheduleData[day] || [];
+        if (items.length === 0) {
+            scheduleListEl.innerHTML = `<p style="color: #777; text-align: center; padding: 20px;">Tidak ada jadwal untuk hari ${day}.</p>`;
             return;
         }
-
+        scheduleListEl.innerHTML = items.map(item => `
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                <strong style="color: #fff; font-size: 16px;">${item.subject}</strong>
+                <span style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 13px; color: #ccc;">${item.time}</span>
+            </div>
+        `).join('');
     }
 
+    // Tampilkan jadwal default (Senin)
+    renderSchedule("Senin");
 
-    nextClass.textContent =
-        "Selesai";
+    // Event listener untuk tombol ganti hari
+    dayButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            dayButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            const day = btn.getAttribute("data-day");
+            renderSchedule(day);
+        });
+    });
 
-    nextTime.textContent =
-        "Tidak ada pelajaran lagi";
+    // --- C. JAM DIGITAL & NEXT CLASS ---
+    const clockEl = document.getElementById("currentTime");
+    const nextClassEl = document.getElementById("nextClass");
+    const nextTimeEl = document.getElementById("nextTime");
 
-}
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        if (clockEl) {
+            clockEl.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        if (nextClassEl && nextTimeEl) {
+            nextClassEl.textContent = "Portal XI IPS 1 Aktif";
+            nextTimeEl.textContent = `${hours}:${minutes} WIB`;
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
+    // --- D. CLASS MOMENTS (GALERI FOTO LOCALSTORAGE) ---
+    const photoInput = document.getElementById("photoInput");
+    const galleryEl = document.getElementById("gallery");
 
-updateNextClass();
+    let savedPhotos = JSON.parse(localStorage.getItem("classPhotos")) || [];
 
-setInterval(updateNextClass, 30000);
+    function renderGallery() {
+        if (!galleryEl) return;
+        if (savedPhotos.length === 0) {
+            galleryEl.innerHTML = `<p style="color: #777; text-align: center; grid-column: 1/-1; padding: 40px;">Belum ada foto yang diunggah. Klik "+ Tambah Foto" di pojok kanan atas.</p>`;
+            return;
+        }
+        galleryEl.innerHTML = savedPhotos.map((photo, index) => `
+            <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2); aspect-ratio: 1/1;">
+                <img src="${photo}" alt="Class Moment" style="width: 100%; height: 100%; object-fit: cover;">
+                <button onclick="window.deletePhoto(${index})" style="position: absolute; top: 8px; right: 8px; background: rgba(255,0,0,0.8); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center;">✕</button>
+            </div>
+        `).join('');
+    }
+
+    if (photoInput) {
+        photoInput.addEventListener("change", (e) => {
+            const files = e.target.files;
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    savedPhotos.push(event.target.result);
+                    localStorage.setItem("classPhotos", JSON.stringify(savedPhotos));
+                    renderGallery();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    window.deletePhoto = function(index) {
+        savedPhotos.splice(index, 1);
+        localStorage.setItem("classPhotos", JSON.stringify(savedPhotos));
+        renderGallery();
+    };
+
+    renderGallery();
+});
