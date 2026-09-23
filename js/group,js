@@ -1,10 +1,9 @@
-// Daftar nama siswa kelas XI IPS 1 (Total 27 siswa)
+// Daftar 27 Siswa Kelas XI IPS 1
 const students = [
     "AL SILA RAMADHANI",
     "ALDIYANSYAH PUTRA KUSUMA",
     "Andin Aulia Agustin",
     "ANDINI AULIA WIJAYA",
-    "ANJU MAULANA LUMBAN GAUL",
     "Aska Fina",
     "David Jonathan Ketaren",
     "FILZAH AMARTA PUTRI HIDAYAT",
@@ -36,7 +35,7 @@ const resultInfoElement = document.getElementById('resultInfo');
 let isSpinning = false;
 
 spinButton.addEventListener('click', function() {
-    if (isSpinning) return; // Mencegah klik ganda saat sedang berputar
+    if (isSpinning) return;
     
     isSpinning = true;
     spinButton.disabled = true;
@@ -46,26 +45,22 @@ spinButton.addEventListener('click', function() {
     resultInfoElement.textContent = 'Menentukan siswa secara acak...';
     
     let counter = 0;
-    const totalFlips = 30; // Jumlah pergantian nama sebelum berhenti
-    const intervalTime = 70; // Kecepatan pergantian (semakin kecil semakin cepat)
+    const totalFlips = 30; 
+    const intervalTime = 70; 
     
     const spinInterval = setInterval(() => {
-        // Tampilkan nama acak untuk efek animasi berputar
         const randomIndex = Math.floor(Math.random() * students.length);
         resultElement.textContent = students[randomIndex];
         resultElement.style.transform = `scale(${1 + (Math.random() * 0.15)})`;
         
         counter++;
         
-        // Ketika mencapai batas perputaran, hentikan dan tentukan hasil akhir
         if (counter >= totalFlips) {
             clearInterval(spinInterval);
             
-            // Pilih hasil akhir yang benar-benar acak
             const finalIndex = Math.floor(Math.random() * students.length);
             const winner = students[finalIndex];
             
-            // Tampilkan hasil akhir
             resultElement.textContent = winner;
             resultElement.style.transform = 'scale(1.15)';
             setTimeout(() => {
@@ -74,7 +69,6 @@ spinButton.addEventListener('click', function() {
             
             resultInfoElement.innerHTML = `Terpilih: <strong style="color: var(--primary, #6366f1);">${winner}</strong> 🎉`;
             
-            // Kembalikan tombol ke kondisi semula
             spinButton.disabled = false;
             spinButton.style.opacity = '1';
             spinButton.textContent = 'SPIN LAGI';
